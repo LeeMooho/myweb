@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://db:3306/mywebdb?serverTimezone=Asia/Seoul
+      username: root
+      password: 1234qwer!
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+myapp:
+  external-api-url: http://localhost:8080
+
+ncp:
+  accessKey: 9PrFrXx4EwNpKkoKLF3x
+  secretKey: dMp0ZtIUTx9uhJcHksLBu4n315nsoxHgEN1qexAZ
+  regionName: kr-standard
+  endPoint: https://kr.object.ncloudstorage.com

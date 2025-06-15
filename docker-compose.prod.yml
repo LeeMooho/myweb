@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-net
+
+  backend:
+    build:
+      context: ./backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+    depends_on:
+      - db
+    networks:
+      - app-net
+
+  frontend:
+    build:
+      context: ./frontend
+      target: ${BUILD_TARGET:-production}
+    restart: always
+    ports:
+      - "80:3000"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
+    depends_on:
+      - backend
+    networks:
+      - app-net
+
+volumes:
+  dbdata:
+
+networks:
+  app-net:
+    driver: bridge
