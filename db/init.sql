@@ -1,3 +1,5 @@
+CREATE DATABASE mywebdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 CREATE TABLE user_tb (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50)

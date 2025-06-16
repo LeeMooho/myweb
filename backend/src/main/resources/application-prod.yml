@@ -5,6 +5,11 @@ spring:
     password: ${DB_PASS}
   application:
     api-url: ${API_URL}
+  web:
+    cors:
+      allowed-origins: ${BASE_API_URL}
+      allowed-methods: "*"
 
 myapp:
-  external-api-url: http://localhost:8080
+  external-api-url: http://www.mooho.shop:8080
+  external-base-api-url: http://www.mooho.shop

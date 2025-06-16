@@ -20,3 +20,4 @@
 # misc
 .env
 .env.prod
+readme.md
