@@ -13,6 +13,7 @@ services:
       context: ./backend
     ports:
       - "${BACKEND_PORT:-8080}:8080"
+      - "5005:5005"   # 디버깅용 포트
     environment:
       - API_URL=${API_URL}
       - DB_HOST=${DB_HOST}

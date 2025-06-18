@@ -18,5 +18,8 @@ RUN apt-get update && apt-get install -y curl \
 COPY --from=builder /app/build/libs/board-app-0.0.1-SNAPSHOT.jar /app/app.jar
 
 
-EXPOSE 8080
-ENTRYPOINT ["./wait-for-it.sh", "db:3306", "--", "java", "-jar", "/app/app.jar"]
+# 포트 개방
+EXPOSE 8080 5005
+
+# JVM 디버깅 옵션 추가
+ENTRYPOINT ["./wait-for-it.sh", "db:3306", "--", "java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "/app/app.jar"]
