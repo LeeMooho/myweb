@@ -7,15 +7,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @Getter
 public class NaverConfiguration {
-    @Value("${ncp.accessKey}")
-    private String accessKey;
-
-    @Value("${ncp.secretKey}")
-    private String secretKey;
-
     @Value("${ncp.regionName}")
     private String regionName;
 
-    @Value("${ncp.endPoint}")
+    @Value("${minio.endPoint}")
     private String endPoint;
+
+    @Value("${minio.access-key}")
+    private String accessKey;
+
+    @Value("${minio.secret-key}")
+    private String secretKey;
 }

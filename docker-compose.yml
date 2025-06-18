@@ -30,15 +30,53 @@ services:
     build: 
       context: ./frontend
       target: ${BUILD_TARGET:-development}   # 개발: development / 운영: production
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL}  # 반드시 있어야 함
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
     environment:
       - NODE_ENV=development
-      - REACT_APP_API_URL=${API_URL}
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
     depends_on:
       - backend
     networks:
       - app-net
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - "19000:9000"   # 호스트포트:컨테이너포트
+      - "19001:9001"
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: 1234qwer!
+    volumes:
+      - minio-data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - app-net
+
+  minio-init:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c '
+      echo "🕓 MinIO 준비 대기 중..." &&
+      until mc alias set local http://minio:9000 admin 1234qwer! 2>/dev/null; do
+        sleep 2;
+      done &&
+      echo "✅ MinIO 연결됨." &&
+      mc mb --ignore-existing local/mywebbucket &&
+      mc anonymous set download local/mywebbucket &&
+      echo "🎉 mywebbucket 생성 및 익명 접근 권한 설정 완료"
+      '
+    networks:
+      - app-net
+
+volumes:
+  minio-data:
 
 networks:
   app-net:

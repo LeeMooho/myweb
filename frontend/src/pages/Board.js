@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBoard } from '../apis/boardApi';
 import { API_URL } from '../config';
+import { MINIO_API_URL } from '../config';
 
 const Board = () => {
     const [board, setBoard] = useState(null);
@@ -38,7 +39,7 @@ const Board = () => {
 
     useEffect(() => {
         getBoard();
-    }, []);
+    }, [getBoard]);
 
     useEffect(() => {
         if(board != null) {
@@ -454,7 +455,7 @@ const Board = () => {
                         component='div'
                         name='preview'
                         id='preview'>
-                        {board != null && board.boardFileDTOList.map((boardFile, index) => (
+                        {board?.boardFileDTOList?.map((boardFile, index) => (
                             <div key={index} style={{
                                 display: 'inline-block', position: 'relative', width: '150px',
                                 height: '120px', margin: '5px', border: '1px solid #00f', zIndex: 1
@@ -468,7 +469,7 @@ const Board = () => {
                                     width: '100%', height: '100%', zIndex: 'none',
                                     cursor: 'pointer'
                                 }} className='fileImg' id={`img${boardFile.boardFileNo}`} 
-                                src={`https://kr.object.ncloudstorage.com/bitcamp-bucket-502/${boardFile.boardFilePath}${boardFile.boardFileName}`}
+                                src={`${MINIO_API_URL}${boardFile.boardFilePath}${boardFile.boardFileName}`}
                                 onClick={() => openChangeFileInput(boardFile.boardFileNo)}></img>
                                 <input type='button' className='btnDel' value='x'
                                        style={{width: '30px', height: '30px', position: 'absolute',

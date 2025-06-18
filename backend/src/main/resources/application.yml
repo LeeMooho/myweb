@@ -19,12 +19,24 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 20MB
 
 myapp:
   external-api-url: http://localhost:8080
+  external-base-api-url: http://www.mooho.shop
 
 ncp:
   accessKey: 9PrFrXx4EwNpKkoKLF3x
   secretKey: dMp0ZtIUTx9uhJcHksLBu4n315nsoxHgEN1qexAZ
   regionName: kr-standard
   endPoint: https://kr.object.ncloudstorage.com
+
+minio:
+  endPoint: http://minio
+  access-key: admin
+  secret-key: 1234qwer!
+  bucket: mywebbucket

@@ -13,3 +13,9 @@ spring:
 myapp:
   external-api-url: http://www.mooho.shop:8080
   external-base-api-url: http://www.mooho.shop
+
+minio:
+  endPoint: http://minio
+  access-key: admin
+  secret-key: 1234qwer!
+  bucket: mywebbucket
