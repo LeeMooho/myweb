@@ -23,18 +23,18 @@ const Header = () => {
           >
             Home
           </Typography>
-          <Button color='inherit' onClick={() => navi('/board-list')}>게시판</Button>
+          <Button color='inherit' onClick={() => navi('/board-list')}>Board</Button>
           {isLogin ? 
             (
               <>
-                <Button color='inherit' onClick={() => navi('/mypage')}>마이페이지</Button>
-                <Button color='inherit' onClick={handleLogout}>로그아웃</Button>
+                <Button color='inherit' onClick={() => navi('/mypage')}>My Page</Button>
+                <Button color='inherit' onClick={handleLogout}>Logout</Button>
               </>
             ) :
             (
               <>
-                <Button color='inherit' onClick={() => navi('/join')}>회원가입</Button>
-                <Button color='inherit' onClick={() => navi('/login')}>로그인</Button>
+                <Button color='inherit' onClick={() => navi('/join')}>Sign Up</Button>
+                <Button color='inherit' onClick={() => navi('/login')}>Login</Button>
               </>
             )
           }

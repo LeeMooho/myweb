@@ -31,11 +31,11 @@ const BoardListTable = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>번호</TableCell>
-                            <TableCell>제목</TableCell>
-                            <TableCell>작성자</TableCell>
-                            <TableCell>작성일</TableCell>
-                            <TableCell>조회수</TableCell>
+                            <TableCell>No</TableCell>
+                            <TableCell>Title</TableCell>
+                            <TableCell>Author</TableCell>
+                            <TableCell>Date</TableCell>
+                            <TableCell>views</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -58,7 +58,7 @@ const BoardListTable = () => {
         <Container 
             maxWidth="xl" 
             style={{marginTop: '1%', display: 'flex', justifyContent: 'right'}}>
-            <Button type='button' color='primary' onClick={() => navi('/post')}>글 등록</Button>
+            <Button type='button' color='primary' onClick={() => navi('/post')}>Write</Button>
         </Container>
         <Container
             maxWidth="xl"

@@ -43,10 +43,10 @@ const SearchBar = () => {
                         fullWidth
                         onChange={changeSearchCondition}
                     >
-                        <option value='all'>전체</option>
-                        <option value='title'>제목</option>
-                        <option value='content'>내용</option>
-                        <option value='writer'>작성자</option>
+                        <option value='all'>All</option>
+                        <option value='title'>Title</option>
+                        <option value='content'>Contents</option>
+                        <option value='writer'>Author</option>
                     </NativeSelect>
                 </Grid>
                 <Grid item md={7}>
@@ -63,7 +63,7 @@ const SearchBar = () => {
                     <Button
                         color='primary'
                         type='submit'>
-                        검색
+                        Search
                     </Button>
                 </Grid>
             </Grid>
