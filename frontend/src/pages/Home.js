@@ -13,12 +13,22 @@ export default function Home() {
       type: "Website"
     },
     {
+      title: "My web Mobile",
+      subtitle: "Android Studio",
+      desc: "Mobile application for Android OS",
+      url: "https://github.com/LeeMooho/mywebmobile",
+      image: "/images/mywebmobile.jpg",
+      type: "Mobile Application",
+      download : "/download/app-release.apk" // Version: 2025-06-22
+    },
+    {
       title: "Stack and Slide",
       subtitle: "Unity",
       desc: "Block Stacking game for android OS",
       url: "https://github.com/LeeMooho/stack-and-Slide",
       image: "/images/game.png",
-      type: "Mobile Game"
+      type: "Mobile Game",
+      download : "/download/universal.apk" // Version: 2025-06-22
     }
   ];
 
@@ -74,9 +84,15 @@ export default function Home() {
                   <h3 className="mb-0">{item.title}</h3>
                   <div className="mb-1 text-body-secondary">{item.subtitle}</div>
                   <p className="mb-auto">{item.desc}</p>
-                  <a href={item.url} className="icon-link gap-1 icon-link-hover stretched-link">
+                  <a href={item.url}>
                     Link
                   </a>
+                  {item.download && (
+                    <a href={item.download} download>
+                      Download
+                    </a>
+                    )
+                  }
                 </div>
                 <div className="col-auto d-none d-lg-block">
                   <img src={item.image} width="200" height="250" alt="thumbnail" />
