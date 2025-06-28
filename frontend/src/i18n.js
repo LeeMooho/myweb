@@ -13,6 +13,10 @@ i18n
     interpolation: {
       escapeValue: false, // react는 자동으로 escape
     },
+
+    react: {
+      useSuspense: false, // ✅ 초기 번역이 없을 때 깨지는 문제 방지
+    },
   });
 
 export default i18n;
