@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Button, Container, Grid, Link, TextField, Typography } from '@mui/material';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {join} from '../apis/userApi';
@@ -17,7 +18,30 @@ const Join = () => {
     const [idChk, setIdChk] = useState(false);
     const [pwValidation, setPwValidtaion] = useState(false);
     const [pwChk, setPwChk] = useState(false);
+    const [password, setPassword] = useState("");
+    const [passwordCheck, setPasswordCheck] = useState("");
+    const [passwordCheckError, setPasswordCheckError] = useState(false);
+    const [showPw, setshowPw] = useState(false);
+    const [showPwCheck, setshowPwCheck] = useState(false);
+    const toggleShowPwCheck = () => {
+        setshowPwCheck(!showPwCheck);
+    };
+
     const dispatch = useDispatch();
+    
+    const toggleShowPw = () => {
+        setshowPw(!showPw);
+      };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+
+        if (passwordCheck !== event.target.value) {
+            setPasswordCheckError(true);
+        } else {
+            setPasswordCheckError(false);
+        }
+    };
 
     const textFiledchanged = useCallback((e) => {
         setForm({
@@ -30,7 +54,6 @@ const Join = () => {
             document.querySelector("#userIdChk").removeAttribute('disabled');
             return;
         }
-
 
         // 비밀번호 일치 여부
         if(e.target.name === 'userPw') {
@@ -109,7 +132,7 @@ const Join = () => {
         } else {
             setPwValidtaion(false);
             document.querySelector("#password-validation").style.display = "block";
-            document.querySelector("#userPw").focus();
+            document.querySelector("#userPw")
             return;
         }
     }, []);
@@ -170,10 +193,14 @@ const Join = () => {
                         id='userPw'
                         label='비밀번호'
                         fullWidth
-                        type='password'
+                        type={showPw ? 'text' : 'password'}
                         value={form.userPw}
                         onChange={textFiledchanged}
                         onBlur={userPwBlur}
+                        InputProps={{
+                            endAdornment: <RemoveRedEyeIcon onClick={toggleShowPw} sx={{cursor: 'pointer'}}/>,
+                            disableUnderline: true
+                            }}
                     ></TextField>
                     <Typography
                         name='password-validation'
@@ -188,13 +215,18 @@ const Join = () => {
                     <TextField
                         name='userPwChk'
                         variant='outlined'
-                        required
                         id='userPwChk'
                         label='비밀번호 확인'
                         fullWidth
-                        type='password'
+                        type={showPwCheck ? 'text' : 'password'}
                         value={form.userPwChk}
                         onChange={textFiledchanged}
+                        error={passwordCheckError}
+                        helperText={passwordCheckError ? "비밀번호가 일치하지 않습니다." : ""}
+                        InputProps={{
+                            endAdornment: <RemoveRedEyeIcon onClick={toggleShowPwCheck} sx={{cursor: 'pointer'}}/>,
+                            disableUnderline: true
+                            }}
                     ></TextField>
                     <Typography
                         name='password-check-success'
@@ -239,23 +271,12 @@ const Join = () => {
                     ></TextField>
                 </Grid>
                 <Grid item xs={12}>
-                    <TextField
-                        name='userTel'
-                        variant='outlined'
-                        id='userTel'
-                        label='전화번호'
-                        fullWidth
-                        value={form.userTel}
-                        onChange={textFiledchanged}
-                    ></TextField>
-                </Grid>
-                <Grid item xs={12}>
                     <Button
                         type='submit'
                         fullWidth
                         variant='contained'
                         color='primary'>
-                        회원가입
+                        Login
                     </Button>
                 </Grid>
             </Grid>
@@ -265,6 +286,8 @@ const Join = () => {
                         이미 계정이 있으시면 로그인하세요.
                     </Link>
                 </Grid>
+            </Grid>
+            <Grid item display='flex' marginTop='60px'>
             </Grid>
         </form>
     </Container>
