@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import Post from './pages/Post';
 import Board from './pages/Board';
+import './i18n';
 
 export let persiststore = persistStore(store);
 
