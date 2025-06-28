@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import {AppBar, Box, Button, Toolbar, Typography} from '@mui/material';
+import React, { useCallback, useState } from 'react';
+import {AppBar, Box, Button, Toolbar, Typography, Select, MenuItem, FormControl } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../apis/userApi';
@@ -9,13 +9,22 @@ const Header = () => {
   const navi = useNavigate();
   const isLogin = useSelector(state => state.boards.isLogin);
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
+ 
+  const [language, setLanguage] = useState(i18n.language || 'en');
+
+  const handleChange = (event) => {
+    const selectedLang = event.target.value;
+    setLanguage(selectedLang);
+    i18n.changeLanguage(selectedLang);
+  };
 
   const handleLogout = useCallback(() => {
     dispatch(logout());
     navi("/login");
   }, [dispatch, navi]);
 
-  const { t, i18n } = useTranslation();
+
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -26,9 +35,6 @@ const Header = () => {
           >
             Home
           </Typography>
-          <Button color='inherit' onClick={() => i18n.changeLanguage('en')}>English</Button>
-          <Button color='inherit' onClick={() => i18n.changeLanguage('jp')}>日本語</Button>
-          <Button color='inherit' onClick={() => i18n.changeLanguage('ko')}>한국어</Button>
           <Button color='inherit' onClick={() => navi('/board-list')}>{t('board')}</Button>
           {isLogin ? 
             (
@@ -44,6 +50,25 @@ const Header = () => {
               </>
             )
           }
+          <FormControl variant="standard" sx={{ minWidth: 120}}>
+            <Select
+              labelId="language-select-label"
+              id="language-select"
+              value={language}
+              onChange={handleChange}
+              sx={{
+      color: 'white', // ✅ 드롭다운 텍스트 색상
+      '& .MuiSvgIcon-root': { color: 'white' }, // 드롭다운 아이콘 색상
+      '&::before': { borderBottomColor: 'white' }, // 기본 밑줄 색상
+      '&:hover::before': { borderBottomColor: 'white' }, // hover 시 밑줄
+      '&::after': { borderBottomColor: 'white' }, // focus 시 밑줄
+              }}
+            >
+              <MenuItem value="en">English</MenuItem>
+              <MenuItem value="jp">日本語</MenuItem>
+              <MenuItem value="ko">한국어</MenuItem>
+            </Select>
+          </FormControl>
         </Toolbar>
       </AppBar>
     </Box>
