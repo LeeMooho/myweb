@@ -1,0 +1,411 @@
+{
+  "header": {
+    "join": {
+      "en": "Sign Up",
+      "ko": "회원가입",
+      "jp": "新規登録"
+    },
+    "login": {
+      "en": "Log In",
+      "ko": "로그인",
+      "jp": "ログイン"
+    },
+    "mypage": {
+      "en": "My Page",
+      "ko": "마이페이지",
+      "jp": "マイページ"
+    },
+    "board": {
+      "en": "Board",
+      "ko": "게시판",
+      "jp": "掲示板"
+    }
+  },
+  "boardListTable": {
+    "no": {
+      "en": "No.",
+      "ko": "No.",
+      "jp": "No."
+    },
+    "title": {
+      "en": "Title",
+      "ko": "제목",
+      "jp": "タイトル"
+    },
+    "author": {
+      "en": "Author",
+      "ko": "작성자",
+      "jp": "作成者"
+    },
+    "date": {
+      "en": "Date",
+      "ko": "날짜",
+      "jp": "日付"
+    },
+    "views": {
+      "en": "Views",
+      "ko": "조회수",
+      "jp": "閲覧数"
+    }
+  },
+  "searchBar": {
+    "search": {
+      "en": "Search",
+      "ko": "검색",
+      "jp": "検索"
+    },
+    "title": {
+      "en": "Title",
+      "ko": "제목",
+      "jp": "タイトル"
+    },
+    "contents": {
+      "en": "Contents",
+      "ko": "내용",
+      "jp": "内容"
+    },
+    "author": {
+      "en": "Author",
+      "ko": "작성자",
+      "jp": "作成者"
+    }
+  },
+  "board": {
+    "errorMessage": {
+      "en": "Failed to retrieve the post. Please contact the administrator.",
+      "ko": "게시글을 가져오는데 실패하였습니다. 관리자에게 문의하세요.",
+      "jp": "投稿の取得に失敗しました。管理者にお問い合わせください。"
+    },
+    "editSucceMessage": {
+      "en": "Successfully updated.",
+      "ko": "정상적으로 수정하였습니다.",
+      "jp": "正常に更新されました。"
+    },
+    "editErrorMessage": {
+      "en": "Failed to update.",
+      "ko": "수정에 실패하였습니다.",
+      "jp": "更新に失敗しました。"
+    },
+    "contents": {
+      "en": "Contents",
+      "ko": "게시글",
+      "jp": "投稿内容"
+    },
+    "title": {
+      "en": "Title",
+      "ko": "제목",
+      "jp": "タイトル"
+    },
+    "author": {
+      "en": "Author",
+      "ko": "작성자",
+      "jp": "作成者"
+    },
+    "date": {
+      "en": "Date",
+      "ko": "날짜",
+      "jp": "日付"
+    },
+    "views": {
+      "en": "Views",
+      "ko": "조회수",
+      "jp": "閲覧数"
+    },
+    "fileAttachment": {
+      "en": "Attach File",
+      "ko": "파일첨부",
+      "jp": "ファイル添付"
+    },
+    "fileSelect": {
+      "en": "Select File",
+      "ko": "파일선택",
+      "jp": "ファイル選択"
+    },
+    "preview": {
+      "en": "Preview",
+      "ko": "미리보기",
+      "jp": "プレビュー"
+    },
+    "explain": {
+      "en": "Click on an image to replace it, or use the Attach File button to add new files.",
+      "ko": "파일을 변경하려면 사진을 클릭하시고 추가하려면 파일첨부 버튼을 클릭하세요.",
+      "jp": "ファイルを変更するには画像をクリックし、新しく追加するには「ファイル添付」ボタンをクリックしてください。"
+    },
+    "modify": {
+      "en": "Modify",
+      "ko": "수정",
+      "jp": "編集"
+    },
+    "delete": {
+      "en": "Delete",
+      "ko": "삭",
+      "jp": "削除"
+    }
+  },
+  "googleLogin": {
+    "alreadySignoutMessage": {
+      "en": "This account has been withdrawn.",
+      "ko": "회원탈퇴한 계정입니다.",
+      "jp": "退会済みのアカウントです。"
+    }
+  },
+  "home": {
+    "webTitle": {
+      "en": "This Website",
+      "ko": "현재 웹사이트",
+      "jp": "このウェブサイト"
+    },
+    "webSubtitle": {
+      "en": "React + Spring Boot + Docker",
+      "ko": "리액트 + 스프링부트 + 도커",
+      "jp": "React + Spring Boot + Docker"
+    },
+    "webDesc": {
+      "en": "You can find more information on my GitHub",
+      "ko": "깃허브에서 자세한 내용을 볼 수 있습니다.",
+      "jp": "GitHubで詳細をご覧いただけます。"
+    },
+    "mobileTitle": {
+      "en": "My Web Mobile",
+      "ko": "현재 웹사이트 모바일 어플버전",
+      "jp": "ウェブサイトモバイル版"
+    },
+    "mobileDesc": {
+      "en": "Mobile application for Android OS",
+      "ko": "안드로이드 모바일 어플리케이션",
+      "jp": "Android OS向けモバイルアプリケーション"
+    },
+    "mobileType": {
+      "en": "Mobile Application",
+      "ko": "모바일 어플리케이션",
+      "jp": "モバイルアプリ"
+    },
+    "gameDesc": {
+      "en": "Block Stacking game for Android OS",
+      "ko": "안드로이드 블록쌓기 게임",
+      "jp": "Android OS向けブロック積みゲーム"
+    },
+    "gameType": {
+      "en": "Mobile Game",
+      "ko": "모바일 게임",
+      "jp": "モバイルゲーム"
+    },
+    "mainWelcom": {
+      "en": "Welcome!",
+      "ko": "안녕하세요!",
+      "jp": "ようこそ！"
+    },
+    "mainDesc1": {
+      "en": "This is Mooho's website",
+      "ko": "저의 웹사이트입니다.",
+      "jp": "こちらはMoohoのウェブサイトです。"
+    },
+    "mainDesc2": {
+      "en": "Here is my GitHub URL",
+      "ko": "깃허브 주소입니다.",
+      "jp": "GitHubのURLはこちらです。"
+    },
+    "link": {
+      "en": "Link",
+      "ko": "링크",
+      "jp": "リンク"
+    },
+    "download": {
+      "en": "Download",
+      "ko": "다운로드",
+      "jp": "ダウンロード"
+    }
+  },
+  "join": {
+    "idErrorMessage": {
+      "en": "Please enter an ID.",
+      "ko": "아이디를 입력하세요.",
+      "jp": "IDを入力してください。"
+    },
+    "sameIdErrorMessage": {
+      "en": "This ID is already taken. Please choose another.",
+      "ko": "중복된 아이디입니다. 다른 아이디로 변경해주세요.",
+      "jp": "重複したIDです。別のIDをお試しください。"
+    },
+    "userIdAvailable": {
+      "en": "The ID '{{userId}}' is available. Do you want to use it?",
+      "ko": "{{userId}}는 사용가능한 아이디입니다. 사용하시겠습니까?",
+      "jp": "ID「{{userId}}」は利用可能です。使用しますか？"
+    },
+    "idCheckErrorMessage": {
+      "en": "An error occurred. Please contact the administrator.",
+      "ko": "에러 발생. 관리자에게 문의하세요.",
+      "jp": "エラーが発生しました。管理者にお問い合わせください。"
+    },
+    "joinIdCheckErrorMessage": {
+      "en": "Please perform the ID duplication check.",
+      "ko": "아이디 중복체크를 진행하세요.",
+      "jp": "ID重複チェックを行ってください。"
+    },
+    "joinPwCheckErrorMessage": {
+      "en": "Password must be at least 9 characters, including special characters, letters, and numbers.",
+      "ko": "비밀번호는 특수문자, 영문자, 숫자 조합의 9자리 이상으로 설정하세요.",
+      "jp": "パスワードは特殊文字、英字、数字を含む9文字以上にしてください。"
+    },
+    "joinSamePwCheckErrorMessage": {
+      "en": "Passwords do not match.",
+      "ko": "비밀번호가 일치하지 않습니다.",
+      "jp": "パスワードが一致しません。"
+    },
+    "join": {
+      "en": "Sign In",
+      "ko": "회원가입",
+      "jp": "登録"
+    },
+    "id": {
+      "en": "ID",
+      "ko": "아이디",
+      "jp": "ID"
+    },
+    "idCheck": {
+      "en": "Check ID",
+      "ko": "중복확인",
+      "jp": "IDチェック"
+    },
+    "password": {
+      "en": "Password",
+      "ko": "비밀번호",
+      "jp": "パスワード"
+    },
+    "passwordDesc": {
+      "en": "Password must be at least 9 characters, including special characters, letters, and numbers.",
+      "ko": "비밀번호는 특수문자, 영문자, 숫자 조합의 9자리 이상으로 설정하세요.",
+      "jp": "パスワードは特殊文字、英字、数字を含む9文字以上にしてください。"
+    },
+    "passwordCheck": {
+      "en": "Confirm Password",
+      "ko": "비밀번호 확인",
+      "jp": "パスワード確認"
+    },
+    "passwordCheckFail": {
+      "en": "Passwords do not match.",
+      "ko": "비밀번호가 일치하지 않습니다.",
+      "jp": "パスワードが一致しません。"
+    },
+    "passwordCheckSucc": {
+      "en": "Passwords match.",
+      "ko": "비밀번호가 일치합니다.",
+      "jp": "パスワードが一致しました。"
+    },
+    "name": {
+      "en": "Name",
+      "ko": "이름",
+      "jp": "名前"
+    },
+    "email": {
+      "en": "Email",
+      "ko": "이메일",
+      "jp": "メールアドレス"
+    },
+    "login": {
+      "en": "Log In",
+      "ko": "로그",
+      "jp": "ログイン"
+    },
+    "alreadyHaveId": {
+      "en": "If you already have an account, please log in.",
+      "ko": "이미 계정이 있으시면 로그인하세요.",
+      "jp": "既にアカウントをお持ちの方はログインしてください。"
+    }
+  },
+  "kakaoLogin": {
+    "alreadySignoutMessage": {
+      "en": "This account has been withdrawn.",
+      "ko": "회원탈퇴한 계정입니다.",
+      "jp": "退会済みのアカウントです。"
+    }
+  },
+  "login": {
+    "login": {
+      "en": "Log In",
+      "ko": "로그인",
+      "jp": "ログイン"
+    },
+    "userId": {
+      "en": "User ID",
+      "ko": "아이디",
+      "jp": "ユーザーID"
+    },
+    "userPw": {
+      "en": "Password",
+      "ko": "비밀번호",
+      "jp": "パスワード"
+    },
+    "join": {
+      "en": "Sign Up",
+      "ko": "회원가입",
+      "jp": "登録"
+    },
+    "simpleLogin": {
+      "en": "Social Login",
+      "ko": "간편 로그인",
+      "jp": "ソーシャルログイン"
+    }
+  },
+  "post": {
+    "post": {
+      "en": "Post",
+      "ko": "글등록",
+      "jp": "投稿"
+    },
+    "title": {
+      "en": "Title",
+      "ko": "제목",
+      "jp": "タイトル"
+    },
+    "postTitle": {
+      "en": "Post Title",
+      "ko": "게시글 제목",
+      "jp": "投稿タイトル"
+    },
+    "writter": {
+      "en": "Author",
+      "ko": "작성자",
+      "jp": "作成者"
+    },
+    "contents": {
+      "en": "Contents",
+      "ko": "내용",
+      "jp": "内容"
+    },
+    "attachment": {
+      "en": "Attachment",
+      "ko": "파일첨부",
+      "jp": "添付ファイル"
+    },
+    "fileSelect": {
+      "en": "Select File",
+      "ko": "파일 선택",
+      "jp": "ファイル選択"
+    },
+    "preview": {
+      "en": "Preview",
+      "ko": "미리보기",
+      "jp": "プレビュー"
+    }
+  },
+  "boardSlice": {
+    "section1": {
+      "en": "Search",
+      "ko": "검색",
+      "jp": "検索"
+    }
+  },
+  "example": {
+    "section1": {
+      "en": "Search",
+      "ko": "검색",
+      "jp": "検索"
+    },
+    "section2": {
+      "en": "Title",
+      "ko": "제목",
+      "jp": "タイトル"
+    }
+  }
+}

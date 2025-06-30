@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {join} from '../apis/userApi';
 import { API_URL } from '../config';
+import { useTranslation } from 'react-i18next';
 
 const Join = () => {
     const [form, setForm] = useState({
@@ -28,6 +29,7 @@ const Join = () => {
     };
 
     const dispatch = useDispatch();
+    const { t } = useTranslation();
     
     const toggleShowPw = () => {
         setshowPw(!showPw);
@@ -88,7 +90,7 @@ const Join = () => {
     // id 중복 체크
     const idCheck = useCallback(async () => {
         if(form.userId === '') {
-            alert("아이디를 입력하세요.");
+            alert(t('join.idErrorMessage'));
             document.querySelector("#userId").focus();
             return;
         }
@@ -102,11 +104,11 @@ const Join = () => {
             );
 
             if(response.data.item.idCheckResult === 'invalid id') {
-                alert("중복된 아이디입니다. 다른 아이디로 변경해주세요.");
+                alert(t('join.sameIdErrorMessage'));
                 document.querySelector("#userId").focus();
                 return;
             } else {
-                if(window.confirm(`${form.userId}는 사용가능한 아이디입니다. 사용하시겠습니까?`)) {
+                if(window.confirm(t('join.userIdAvailable', { userId: form.userId }))) {
                     document.querySelector("#userIdChk").setAttribute('disabled', true);
                     setIdChk(true);
                     return;
@@ -114,7 +116,7 @@ const Join = () => {
             }
         } catch(e) {
             console.log(e);
-            alert("에러 발생. 관리자에게 문의하세요.");
+            alert(t('join.idCheckErrorMessage'));
         }
     }, [form.userId]);
 
@@ -142,18 +144,18 @@ const Join = () => {
         e.preventDefault();
 
         if(!idChk) {
-            alert("아이디 중복체크를 진행하세요.");
+            alert(t('join.joinIdCheckErrorMessage'));
             return;
         }
 
         if(!pwValidation) {
-            alert("비밀번호는 특수문자, 영문자, 숫자 조합의 9자리 이상으로 설정하세요.");
+            alert(t('join.joinPwCheckErrorMessage'));
             document.querySelector("#userPw").focus();
             return;
         }
 
         if(!pwChk) {
-            alert("비밀번호가 일치하지 않습니다.");
+            alert(t('join.joinSamePwCheckErrorMessage'));
             document.querySelector("#userPwChk").focus();
             return;
         }
@@ -166,7 +168,7 @@ const Join = () => {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Typography component='h1' variant='h5'>
-                        회원가입
+                        {t('join.join')}
                     </Typography>
                 </Grid>
                 <Grid item xs={12} textAlign='right'>
@@ -175,14 +177,14 @@ const Join = () => {
                         variant='outlined'
                         required
                         id='userId'
-                        label='아이디'
+                        label={t('join.id')}
                         autoFocus
                         fullWidth
                         value={form.userId}
                         onChange={textFiledchanged}
                     ></TextField>
                     <Button name='userIdChk' id='userIdChk' color='primary' onClick={idCheck}>
-                        중복확인
+                        {t('join.idCheck')}
                     </Button>
                 </Grid>
                 <Grid item xs={12}>
@@ -191,7 +193,7 @@ const Join = () => {
                         variant='outlined'
                         required
                         id='userPw'
-                        label='비밀번호'
+                        label={t('join.password')}
                         fullWidth
                         type={showPw ? 'text' : 'password'}
                         value={form.userPw}
@@ -208,7 +210,7 @@ const Join = () => {
                         component='p'
                         variant='string'
                         style={{display: 'none', color: 'red'}}>
-                        비밀번호는 특수문자, 영문자, 숫자 조합의 9자리 이상으로 설정하세요.
+                        {t('join.passwordDesc')}
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -216,13 +218,13 @@ const Join = () => {
                         name='userPwChk'
                         variant='outlined'
                         id='userPwChk'
-                        label='비밀번호 확인'
+                        label={t('join.passwordCheck')}
                         fullWidth
                         type={showPwCheck ? 'text' : 'password'}
                         value={form.userPwChk}
                         onChange={textFiledchanged}
                         error={passwordCheckError}
-                        helperText={passwordCheckError ? "비밀번호가 일치하지 않습니다." : ""}
+                        helperText={passwordCheckError ? t('join.passwordCheckFail') : ""}
                         InputProps={{
                             endAdornment: <RemoveRedEyeIcon onClick={toggleShowPwCheck} sx={{cursor: 'pointer'}}/>,
                             disableUnderline: true
@@ -234,7 +236,7 @@ const Join = () => {
                         component='p'
                         variant='string'
                         style={{display: 'none', color: 'green'}}>
-                        비밀번호가 일치합니다.
+                        {t('join.passwordCheckSucc')}
                     </Typography>
                     <Typography
                         name='password-check-fail'
@@ -242,7 +244,7 @@ const Join = () => {
                         component='p'
                         variant='string'
                         style={{display: 'none', color: 'red'}}>
-                        비밀번호가 일치하지 않습니다.
+                        {t('join.passwordCheckFail')}
                     </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -251,7 +253,7 @@ const Join = () => {
                         variant='outlined'
                         required
                         id='userName'
-                        label='이름'
+                        label={t('join.name')}
                         fullWidth
                         value={form.userName}
                         onChange={textFiledchanged}
@@ -263,7 +265,7 @@ const Join = () => {
                         variant='outlined'
                         required
                         id='userEmail'
-                        label='이메일'
+                        label={t('join.email')}
                         fullWidth
                         type='email'
                         value={form.userEmail}
@@ -276,14 +278,14 @@ const Join = () => {
                         fullWidth
                         variant='contained'
                         color='primary'>
-                        Login
+                        {t('join.login')}
                     </Button>
                 </Grid>
             </Grid>
             <Grid container justifyContent='flex-end'>
                 <Grid item>
                     <Link href="/login" variant='body2'>
-                        이미 계정이 있으시면 로그인하세요.
+                        {t('join.alreadyHaveId')}
                     </Link>
                 </Grid>
             </Grid>

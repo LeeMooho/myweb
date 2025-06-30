@@ -1,6 +1,103 @@
 {
-  "welcome": "환영합니다",
-  "login": "로그인",
-  "mypage": "내정보",
-  "board": "게시글"
+  "header": {
+    "join": "회원가입",
+    "login": "로그인",
+    "mypage": "마이페이지",
+    "board": "게시판"
+  },
+  "boardListTable": {
+    "no": "No.",
+    "title": "제목",
+    "author": "작성자",
+    "date": "날짜",
+    "views": "조회수"
+  },
+  "searchBar": {
+    "search": "검색",
+    "title": "제목",
+    "contents": "내용",
+    "author": "작성자"
+  },
+  "board": {
+    "errorMessage": "게시글을 가져오는데 실패하였습니다. 관리자에게 문의하세요.",
+    "editSucceMessage": "정상적으로 수정하였습니다.",
+    "editErrorMessage": "수정에 실패하였습니다.",
+    "contents": "게시글",
+    "title": "제목",
+    "author": "작성자",
+    "date": "날짜",
+    "views": "조회수",
+    "fileAttachment": "파일첨부",
+    "fileSelect": "파일선택",
+    "preview": "미리보기",
+    "explain": "파일을 변경하려면 사진을 클릭하시고 추가하려면 파일첨부 버튼을 클릭하세요.",
+    "modify": "수정",
+    "delete": "삭"
+  },
+  "googleLogin": {
+    "alreadySignoutMessage": "회원탈퇴한 계정입니다."
+  },
+  "home": {
+    "webTitle": "현재 웹사이트",
+    "webSubtitle": "리액트 + 스프링부트 + 도커",
+    "webDesc": "깃허브에서 자세한 내용을 볼 수 있습니다.",
+    "mobileTitle": "현재 웹사이트 모바일 어플버전",
+    "mobileDesc": "안드로이드 모바일 어플리케이션",
+    "mobileType": "모바일 어플리케이션",
+    "gameDesc": "안드로이드 블록쌓기 게임",
+    "gameType": "모바일 게임",
+    "mainWelcom": "안녕하세요!",
+    "mainDesc1": "저의 웹사이트입니다.",
+    "mainDesc2": "깃허브 주소입니다.",
+    "link": "링크",
+    "download": "다운로드"
+  },
+  "join": {
+    "idErrorMessage": "아이디를 입력하세요.",
+    "sameIdErrorMessage": "중복된 아이디입니다. 다른 아이디로 변경해주세요.",
+    "userIdAvailable": "{{userId}}는 사용가능한 아이디입니다. 사용하시겠습니까?",
+    "idCheckErrorMessage": "에러 발생. 관리자에게 문의하세요.",
+    "joinIdCheckErrorMessage": "아이디 중복체크를 진행하세요.",
+    "joinPwCheckErrorMessage": "비밀번호는 특수문자, 영문자, 숫자 조합의 9자리 이상으로 설정하세요.",
+    "joinSamePwCheckErrorMessage": "비밀번호가 일치하지 않습니다.",
+    "join": "회원가입",
+    "id": "아이디",
+    "idCheck": "중복확인",
+    "password": "비밀번호",
+    "passwordDesc": "비밀번호는 특수문자, 영문자, 숫자 조합의 9자리 이상으로 설정하세요.",
+    "passwordCheck": "비밀번호 확인",
+    "passwordCheckFail": "비밀번호가 일치하지 않습니다.",
+    "passwordCheckSucc": "비밀번호가 일치합니다.",
+    "name": "이름",
+    "email": "이메일",
+    "login": "로그",
+    "alreadyHaveId": "이미 계정이 있으시면 로그인하세요."
+  },
+  "kakaoLogin": {
+    "alreadySignoutMessage": "회원탈퇴한 계정입니다."
+  },
+  "login": {
+    "login": "로그인",
+    "userId": "아이디",
+    "userPw": "비밀번호",
+    "join": "회원가입",
+    "simpleLogin": "간편 로그인"
+  },
+  "post": {
+    "post": "글등록",
+    "title": "제목",
+    "postTitle": "게시글 제목",
+    "writter": "작성자",
+    "contents": "내용",
+    "attachment": "파일첨부",
+    "fileSelect": "파일 선택",
+    "preview": "미리보기"
+  },
+  "boardSlice": {
+    "section1": "검색"
+  },
+  "example": {
+    "section1": "검색",
+    "section2": "제목"
+  }
 }

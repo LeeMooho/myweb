@@ -6,11 +6,14 @@ import {
     change_searchKeyword
 } from '../slices/boardSlice';
 import {getBoards} from '../apis/boardApi';
+import { useTranslation } from 'react-i18next';
+
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const searchCondition = useSelector(state => state.boards.searchCondition);
     const searchKeyword = useSelector(state => state.boards.searchKeyword);
+    const { t } = useTranslation();
 
     const changeSearchCondition = useCallback((e) => {
         dispatch(change_searchCondition(e.target.value));
@@ -44,9 +47,9 @@ const SearchBar = () => {
                         onChange={changeSearchCondition}
                     >
                         <option value='all'>All</option>
-                        <option value='title'>Title</option>
-                        <option value='content'>Contents</option>
-                        <option value='writer'>Author</option>
+                        <option value='title'>{t('searchBar.title')}</option>
+                        <option value='content'>{t('searchBar.contents')}</option>
+                        <option value='writer'>{t('searchBar.author')}</option>
                     </NativeSelect>
                 </Grid>
                 <Grid item md={7}>
@@ -63,7 +66,7 @@ const SearchBar = () => {
                     <Button
                         color='primary'
                         type='submit'>
-                        Search
+                        {t('searchBar.search')}
                     </Button>
                 </Grid>
             </Grid>

@@ -3,12 +3,14 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { postBoard } from '../apis/boardApi';
 import {useNavigate} from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Post = () => {
     const loginUserId = useSelector(state => state.boards.loginUserId);
     const uploadFiles = [];
     const dispatch = useDispatch();
     const navi = useNavigate();
+    const { t } = useTranslation();
 
     const openFileInput = useCallback(() => {
         document.querySelector("#uploadFiles").click();
@@ -150,7 +152,7 @@ const Post = () => {
         <Grid container>
             <Grid item xs={12}>
                 <Typography component='h1' variant='h5'>
-                    글 등록
+                    {t('post.post')}
                 </Typography>
             </Grid>
         </Grid>
@@ -162,7 +164,7 @@ const Post = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        제목
+                        {t('post.title')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -175,7 +177,7 @@ const Post = () => {
                         fullWidth
                         size='small'
                         required
-                        placeholder='게시글 제목'
+                        placeholder={t('post.postTitle')}
                     ></TextField>
                 </Grid>
             </Grid>
@@ -186,7 +188,7 @@ const Post = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        작성자
+                        {t('post.writter')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -199,7 +201,7 @@ const Post = () => {
                         fullWidth
                         size='small'
                         required
-                        placeholder='게시글 작성자'
+                        placeholder={t('post.writter')}
                         aria-readonly='true'
                         value={loginUserId}
                     ></TextField>
@@ -212,7 +214,7 @@ const Post = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        내용
+                        {t('post.contents')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -225,7 +227,7 @@ const Post = () => {
                         fullWidth
                         size='small'
                         required
-                        placeholder='게시글 내용'
+                        placeholder={t('post.contents')}
                         multiline
                         rows={10}
                     ></TextField>
@@ -238,14 +240,14 @@ const Post = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        파일첨부
+                        {t('post.attachment')}
                     </Typography>
                 </Grid>
                 <Grid
                     item
                     xs={10}
                 >
-                    <Button type='button' variant='outlined' onClick={openFileInput}>파일 선택</Button>
+                    <Button type='button' variant='outlined' onClick={openFileInput}>{t('post.fileSelect')}</Button>
                     <input 
                         type='file' 
                         multiple 
@@ -262,7 +264,7 @@ const Post = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        미리보기
+                        {t('post.preview')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -277,7 +279,7 @@ const Post = () => {
             </Grid>
             <Grid container style={{marginTop: '3%', textAlign: 'center'}}>
                 <Grid item xs={12}>
-                    <Button type='submit' variant='contained'>등록</Button>
+                    <Button type='submit' variant='contained'>{t('post.post')}</Button>
                 </Grid>
             </Grid>
         </form>

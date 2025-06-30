@@ -1,6 +1,103 @@
 {
-  "welcome": "Welcome",
-  "login": "Log in",
-  "mypage": "My Page",
-  "board": "Board"
+  "header": {
+    "join": "Sign Up",
+    "login": "Log In",
+    "mypage": "My Page",
+    "board": "Board"
+  },
+  "boardListTable": {
+    "no": "No.",
+    "title": "Title",
+    "author": "Author",
+    "date": "Date",
+    "views": "Views"
+  },
+  "searchBar": {
+    "search": "Search",
+    "title": "Title",
+    "contents": "Contents",
+    "author": "Author"
+  },
+  "board": {
+    "errorMessage": "Failed to retrieve the post. Please contact the administrator.",
+    "editSucceMessage": "Successfully updated.",
+    "editErrorMessage": "Failed to update.",
+    "contents": "Contents",
+    "title": "Title",
+    "author": "Author",
+    "date": "Date",
+    "views": "Views",
+    "fileAttachment": "Attach File",
+    "fileSelect": "Select File",
+    "preview": "Preview",
+    "explain": "Click on an image to replace it, or use the Attach File button to add new files.",
+    "modify": "Modify",
+    "delete": "Delete"
+  },
+  "googleLogin": {
+    "alreadySignoutMessage": "This account has been withdrawn."
+  },
+  "home": {
+    "webTitle": "This Website",
+    "webSubtitle": "React + Spring Boot + Docker",
+    "webDesc": "You can find more information on my GitHub",
+    "mobileTitle": "My Web Mobile",
+    "mobileDesc": "Mobile application for Android OS",
+    "mobileType": "Mobile Application",
+    "gameDesc": "Block Stacking game for Android OS",
+    "gameType": "Mobile Game",
+    "mainWelcom": "Welcome!",
+    "mainDesc1": "This is Mooho's website",
+    "mainDesc2": "Here is my GitHub URL",
+    "link": "Link",
+    "download": "Download"
+  },
+  "join": {
+    "idErrorMessage": "Please enter an ID.",
+    "sameIdErrorMessage": "This ID is already taken. Please choose another.",
+    "userIdAvailable": "The ID '{{userId}}' is available. Do you want to use it?",
+    "idCheckErrorMessage": "An error occurred. Please contact the administrator.",
+    "joinIdCheckErrorMessage": "Please perform the ID duplication check.",
+    "joinPwCheckErrorMessage": "Password must be at least 9 characters, including special characters, letters, and numbers.",
+    "joinSamePwCheckErrorMessage": "Passwords do not match.",
+    "join": "Sign In",
+    "id": "ID",
+    "idCheck": "Check ID",
+    "password": "Password",
+    "passwordDesc": "Password must be at least 9 characters, including special characters, letters, and numbers.",
+    "passwordCheck": "Confirm Password",
+    "passwordCheckFail": "Passwords do not match.",
+    "passwordCheckSucc": "Passwords match.",
+    "name": "Name",
+    "email": "Email",
+    "login": "Log In",
+    "alreadyHaveId": "If you already have an account, please log in."
+  },
+  "kakaoLogin": {
+    "alreadySignoutMessage": "This account has been withdrawn."
+  },
+  "login": {
+    "login": "Log In",
+    "userId": "User ID",
+    "userPw": "Password",
+    "join": "Sign Up",
+    "simpleLogin": "Social Login"
+  },
+  "post": {
+    "post": "Post",
+    "title": "Title",
+    "postTitle": "Post Title",
+    "writter": "Author",
+    "contents": "Contents",
+    "attachment": "Attachment",
+    "fileSelect": "Select File",
+    "preview": "Preview"
+  },
+  "boardSlice": {
+    "section1": "Search"
+  },
+  "example": {
+    "section1": "Search",
+    "section2": "Title"
+  }
 }

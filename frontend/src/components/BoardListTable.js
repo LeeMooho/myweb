@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBoards } from '../apis/boardApi';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const BoardListTable = () => {
     const boards = useSelector(state => state.boards.boards);
@@ -11,6 +12,7 @@ const BoardListTable = () => {
     const page = useSelector(state => state.boards.page);
     const dispatch = useDispatch();
     const navi = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         dispatch(getBoards({searchCondition: 'all', searchKeyword: '', page: 0}));
@@ -31,11 +33,11 @@ const BoardListTable = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>No</TableCell>
-                            <TableCell>Title</TableCell>
-                            <TableCell>Author</TableCell>
-                            <TableCell>Date</TableCell>
-                            <TableCell>views</TableCell>
+                            <TableCell>{t('boardListTable.no')}</TableCell>
+                            <TableCell>{t('boardListTable.title')}</TableCell>
+                            <TableCell>{t('boardListTable.author')}</TableCell>
+                            <TableCell>{t('boardListTable.date')}</TableCell>
+                            <TableCell>{t('boardListTable.views')}</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

@@ -1,6 +1,103 @@
 {
-  "welcome": "ようこそ",
-  "login": "ログイン",
-  "mypage": "個人情報",
-  "board": "ボドレー"
+  "header": {
+    "join": "新規登録",
+    "login": "ログイン",
+    "mypage": "マイページ",
+    "board": "掲示板"
+  },
+  "boardListTable": {
+    "no": "No.",
+    "title": "タイトル",
+    "author": "作成者",
+    "date": "日付",
+    "views": "閲覧数"
+  },
+  "searchBar": {
+    "search": "検索",
+    "title": "タイトル",
+    "contents": "内容",
+    "author": "作成者"
+  },
+  "board": {
+    "errorMessage": "投稿の取得に失敗しました。管理者にお問い合わせください。",
+    "editSucceMessage": "正常に更新されました。",
+    "editErrorMessage": "更新に失敗しました。",
+    "contents": "投稿内容",
+    "title": "タイトル",
+    "author": "作成者",
+    "date": "日付",
+    "views": "閲覧数",
+    "fileAttachment": "ファイル添付",
+    "fileSelect": "ファイル選択",
+    "preview": "プレビュー",
+    "explain": "ファイルを変更するには画像をクリックし、新しく追加するには「ファイル添付」ボタンをクリックしてください。",
+    "modify": "編集",
+    "delete": "削除"
+  },
+  "googleLogin": {
+    "alreadySignoutMessage": "退会済みのアカウントです。"
+  },
+  "home": {
+    "webTitle": "このウェブサイト",
+    "webSubtitle": "React + Spring Boot + Docker",
+    "webDesc": "GitHubで詳細をご覧いただけます。",
+    "mobileTitle": "ウェブサイトモバイル版",
+    "mobileDesc": "Android OS向けモバイルアプリケーション",
+    "mobileType": "モバイルアプリ",
+    "gameDesc": "Android OS向けブロック積みゲーム",
+    "gameType": "モバイルゲーム",
+    "mainWelcom": "ようこそ！",
+    "mainDesc1": "こちらはMoohoのウェブサイトです。",
+    "mainDesc2": "GitHubのURLはこちらです。",
+    "link": "リンク",
+    "download": "ダウンロード"
+  },
+  "join": {
+    "idErrorMessage": "IDを入力してください。",
+    "sameIdErrorMessage": "重複したIDです。別のIDをお試しください。",
+    "userIdAvailable": "ID「{{userId}}」は利用可能です。使用しますか？",
+    "idCheckErrorMessage": "エラーが発生しました。管理者にお問い合わせください。",
+    "joinIdCheckErrorMessage": "ID重複チェックを行ってください。",
+    "joinPwCheckErrorMessage": "パスワードは特殊文字、英字、数字を含む9文字以上にしてください。",
+    "joinSamePwCheckErrorMessage": "パスワードが一致しません。",
+    "join": "登録",
+    "id": "ID",
+    "idCheck": "IDチェック",
+    "password": "パスワード",
+    "passwordDesc": "パスワードは特殊文字、英字、数字を含む9文字以上にしてください。",
+    "passwordCheck": "パスワード確認",
+    "passwordCheckFail": "パスワードが一致しません。",
+    "passwordCheckSucc": "パスワードが一致しました。",
+    "name": "名前",
+    "email": "メールアドレス",
+    "login": "ログイン",
+    "alreadyHaveId": "既にアカウントをお持ちの方はログインしてください。"
+  },
+  "kakaoLogin": {
+    "alreadySignoutMessage": "退会済みのアカウントです。"
+  },
+  "login": {
+    "login": "ログイン",
+    "userId": "ユーザーID",
+    "userPw": "パスワード",
+    "join": "登録",
+    "simpleLogin": "ソーシャルログイン"
+  },
+  "post": {
+    "post": "投稿",
+    "title": "タイトル",
+    "postTitle": "投稿タイトル",
+    "writter": "作成者",
+    "contents": "内容",
+    "attachment": "添付ファイル",
+    "fileSelect": "ファイル選択",
+    "preview": "プレビュー"
+  },
+  "boardSlice": {
+    "section1": "検索"
+  },
+  "example": {
+    "section1": "検索",
+    "section2": "タイトル"
+  }
 }

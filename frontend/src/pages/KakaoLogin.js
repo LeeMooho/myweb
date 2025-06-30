@@ -3,10 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { Grid } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const KakaoLogin = () => {
 
     const navi = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const params= new URL(document.location.toString()).searchParams;
@@ -65,7 +67,7 @@ const KakaoLogin = () => {
                     }
                 })
                 .catch((e) => {
-                    alert('회원탈퇴한 계정입니다.');
+                    alert(t('kakaoLogin.alreadySignoutMessage'));
                     navi('/');
                     console.error(e);
                 });

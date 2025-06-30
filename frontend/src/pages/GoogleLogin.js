@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { Grid } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const GoogleLogin = () => {
     const navi = useNavigate();
+    const { t } = useTranslation();
 
     useEffect(() => {
         const params= new URL(document.location.toString()).searchParams;
@@ -19,6 +21,7 @@ const GoogleLogin = () => {
         console.log("CLIENT_SECRET_KEY" + CLIENT_SECRET_KEY);
         console.log("GRANT_TYPE" + GRANT_TYPE);
         console.log("REDIRECT_URL" + REDIRECT_URL);
+
 
     axios.post(
         `https://oauth2.googleapis.com/token?code=${code}&client_id=${REST_API_KEY}&client_secret=${CLIENT_SECRET_KEY}&redirect_uri=${REDIRECT_URL}&grant_type=${GRANT_TYPE}`,
@@ -65,7 +68,7 @@ const GoogleLogin = () => {
                     }
                 })
                 .catch((e) => {
-                    alert('회원탈퇴한 계정입니다.');
+                    alert(t('googleLogin.alreadySignoutMessage'));
                     navi('/');
                     console.error(e);
                 });

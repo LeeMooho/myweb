@@ -35,18 +35,18 @@ const Header = () => {
           >
             Home
           </Typography>
-          <Button color='inherit' onClick={() => navi('/board-list')}>{t('board')}</Button>
+          <Button color='inherit' onClick={() => navi('/board-list')}>{t('header.board')}</Button>
           {isLogin ? 
             (
               <>
-                <Button color='inherit' onClick={() => navi('/mypage')}>{t('mypage')}</Button>
+                <Button color='inherit' onClick={() => navi('/mypage')}>{t('header.mypage')}</Button>
                 <Button color='inherit' onClick={handleLogout}>Logout</Button>
               </>
             ) :
             (
               <>
-                <Button color='inherit' onClick={() => navi('/join')}>Sign Up</Button>
-                <Button color='inherit' onClick={() => navi('/login')}>Login</Button>
+                <Button color='inherit' onClick={() => navi('/join')}>{t('header.join')}</Button>
+                <Button color='inherit' onClick={() => navi('/login')}>{t('header.login')}</Button>
               </>
             )
           }
@@ -57,11 +57,11 @@ const Header = () => {
               value={language}
               onChange={handleChange}
               sx={{
-      color: 'white', // ✅ 드롭다운 텍스트 색상
-      '& .MuiSvgIcon-root': { color: 'white' }, // 드롭다운 아이콘 색상
-      '&::before': { borderBottomColor: 'white' }, // 기본 밑줄 색상
-      '&:hover::before': { borderBottomColor: 'white' }, // hover 시 밑줄
-      '&::after': { borderBottomColor: 'white' }, // focus 시 밑줄
+                  color: 'white', // ✅ 드롭다운 텍스트 색상
+                  '& .MuiSvgIcon-root': { color: 'white' }, // 드롭다운 아이콘 색상
+                  '&::before': { borderBottomColor: 'white' }, // 기본 밑줄 색상
+                  '&:hover::before': { borderBottomColor: 'white' }, // hover 시 밑줄
+                  '&::after': { borderBottomColor: 'white' }, // focus 시 밑줄
               }}
             >
               <MenuItem value="en">English</MenuItem>

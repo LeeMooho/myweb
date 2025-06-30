@@ -4,6 +4,7 @@ import { Button, Container, Grid, Link, TextField, Typography } from '@mui/mater
 import { useDispatch } from 'react-redux';
 import { login } from '../apis/userApi';
 import {useNavigate} from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
     const [form, setForm] = useState({
@@ -32,8 +33,9 @@ const Login = () => {
         navi("/");
     }, [form, dispatch]);
 
-    
+    const { t } = useTranslation();
     const [showPw, setshowPw] = useState(false);
+    
 
     const Kakao_Rest_api_key = process.env.REACT_APP_KAKAO_REST_API; //REST API KEY
     const kakao_redirect_url = `${process.env.REACT_APP_FRONT_URL}/kakao-login` //Redirect URI
@@ -60,7 +62,7 @@ const Login = () => {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Typography component='h1' variant='h5'>
-                        로그인
+                        {t('login.login')}
                     </Typography>
                 </Grid>
                 <Grid item xs={12} textAlign='right'>
@@ -69,7 +71,7 @@ const Login = () => {
                         variant='outlined'
                         required
                         id='userId'
-                        label='아이디'
+                        label={t('login.userId')}
                         autoFocus
                         fullWidth
                         value={form.userId}
@@ -82,7 +84,7 @@ const Login = () => {
                         variant='outlined'
                         required
                         id='userPw'
-                        label='비밀번호'
+                        label={t('login.userPw')}
                         fullWidth
                         type={showPw ? 'text' : 'password'}
                         value={form.userPw}
@@ -97,7 +99,7 @@ const Login = () => {
                 <Grid item xs={12}>
                     <Button type='submit' fullWidth variant='contained' color='primary' 
                             tyle={{height: '55px', fontSize: '18px'}}>
-                        로그인
+                        {t('login.login')}
                     </Button>
                 </Grid>
             </Grid>
@@ -109,7 +111,7 @@ const Login = () => {
                 </Grid>
                 <Grid item>
                     <Link href="/Join" variant="body2" style={{color: '#616568', fontSize: '17px'}}>
-                        회원가입
+                        {t('login.join')}
                     </Link>
                 </Grid>
             </Grid>
@@ -132,7 +134,7 @@ const Login = () => {
                         backgroundColor: '#fff',
                         padding: '0 8px'
                     }}>
-                        간편 로그인
+                        {t('login.simpleLogin')}
                     </Typography>
                 </Grid>
                 <Grid item display='flex' marginTop='15px'>

@@ -6,11 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeBoard } from '../apis/boardApi';
 import { API_URL } from '../config';
 import { MINIO_API_URL } from '../config';
+import { useTranslation } from 'react-i18next';
 
 const Board = () => {
     const [board, setBoard] = useState(null);
     const {boardNo} = useParams();
     const loginUserId = useSelector(state => state.boards.loginUserId);
+    const { t } = useTranslation();
 
     let uploadFiles = [];
     let changeFiles = [];
@@ -32,7 +34,7 @@ const Board = () => {
 
             setBoard(response.data.item);
         } catch(e) {
-            alert("에러발생.");
+            alert(t('board.errorMessage'));
             console.log(e);
         }
     }, [boardNo]);
@@ -231,11 +233,11 @@ const Board = () => {
             );
             
             if(response.data && response.data.item) {
-                alert("정상적으로 수정되었습니다.");
+                alert(t('board.editSucceMessage'));
                 window.location.reload();
             }
         } catch(e) {
-            alert("에러 발생.");
+            alert(t('board.editErrorMessage'));
             console.log(e);
         }
     }, []);
@@ -283,7 +285,7 @@ const Board = () => {
         <Grid container>
             <Grid item xs={12}>
                 <Typography component='h1' variant='h5'>
-                    게시글
+                    {t('board.contents')}
                 </Typography>
             </Grid>
         </Grid>
@@ -296,7 +298,7 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        제목
+                        {t('board.title')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -321,7 +323,7 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        작성자
+                        {t('board.author')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -344,7 +346,7 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        내용
+                        {t('board.contents')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -371,7 +373,7 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        작성일
+                        {t('board.date')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -394,7 +396,7 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        조회수
+                        {t('board.views')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -417,14 +419,14 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        파일첨부
+                        {t('board.fileAttachment')}
                     </Typography>
                 </Grid>
                 <Grid
                     item
                     xs={10}
                 >
-                    <Button type='button' variant='outlined' onClick={openFileInput}>파일 선택</Button>
+                    <Button type='button' variant='outlined' onClick={openFileInput}>{t('board.fileSelect')}</Button>
                     <input 
                         type='file' 
                         multiple 
@@ -441,7 +443,7 @@ const Board = () => {
                     style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 >
                     <Typography component='p' variant='string'>
-                        미리보기
+                        {t('board.preview')}
                     </Typography>
                 </Grid>
                 <Grid
@@ -449,7 +451,7 @@ const Board = () => {
                     xs={10}
                 >
                     <Typography component='p' variant='string'>
-                        파일을 변경하려면 사진을 클릭하시고 추가하려면 파일첨부 버튼을 클릭하세요.
+                        {t('board.explain')}
                     </Typography>
                     <Container
                         component='div'
@@ -493,10 +495,10 @@ const Board = () => {
                         ? {display: 'block'}
                         : {display: 'none'}
                     }>
-                    <Button type='submit' variant='contained'>수정</Button>
+                    <Button type='submit' variant='contained'>{t('board.modify')}</Button>
                     <Button type='button' variant='contained' style={{marginLeft: '2%'}}
                             onClick={() => remove(board.boardNo)}
-                    >삭제</Button>
+                    >{t('board.delete')}</Button>
                 </Grid>
             </Grid>
         </form>

@@ -1,33 +1,37 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // 홈 페이지 컴포넌트 정의
 export default function Home() {
+
+  const { t } = useTranslation();
+
   // 프로젝트 데이터 배열
   const projects = [
     {
-      title: "This website",
-      subtitle: "React + Spring Boot + Docker",
-      desc: "You can find more information on my GitHub",
+      title: t("home.webTitle"),
+      subtitle: t("home.webSubtitle"),
+      desc: t("home.webDesc"),
       url: "https://github.com/LeeMooho/myweb",
       image: "/images/board.png",
       type: "Website"
     },
     {
-      title: "My web Mobile",
+      title: t("home.mobileTitle"),
       subtitle: "Android Studio",
-      desc: "Mobile application for Android OS",
+      desc: t("home.mobileDesc"),
       url: "https://github.com/LeeMooho/mywebmobile",
       image: "/images/mywebmobile.jpg",
-      type: "Mobile Application",
+      type: t("home.mobileType"),
       download : "/download/app-release.apk" // Version: 2025-06-22
     },
     {
       title: "Stack and Slide",
       subtitle: "Unity",
-      desc: "Block Stacking game for android OS",
+      desc: t("home.gameDesc"),
       url: "https://github.com/LeeMooho/stack-and-Slide",
       image: "/images/game.png",
-      type: "Mobile Game",
+      type: t("home.gameType"),
       download : "/download/universal.apk" // Version: 2025-06-22
     }
   ];
@@ -61,9 +65,9 @@ export default function Home() {
       <main className="container">
         <div className="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
           <div className="col-lg-6 px-0">
-            <h1 className="display-4 fst-italic">Welcome!</h1>
-            <p className="lead my-3">Hello, This is Mooho's website</p>
-            <p className="lead my-3">Here is my GitHub URL</p>
+            <h1 className="display-4 fst-italic">{t('home.mainWelcom')}</h1>
+            <p className="lead my-3">{t('home.mainDesc1')}</p>
+            <p className="lead my-3">{t('home.mainDesc2')}</p>
             <p className="lead mb-0">
               <a href="https://github.com/LeeMooho" className="text-body-emphasis fw-bold">
                 GitHub
@@ -85,11 +89,11 @@ export default function Home() {
                   <div className="mb-1 text-body-secondary">{item.subtitle}</div>
                   <p className="mb-auto">{item.desc}</p>
                   <a href={item.url}>
-                    Link
+                    {t('home.link')}
                   </a>
                   {item.download && (
                     <a href={item.download} download>
-                      Download
+                      {t('home.downloads')}
                     </a>
                     )
                   }
