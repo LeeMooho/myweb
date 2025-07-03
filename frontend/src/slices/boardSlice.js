@@ -3,6 +3,7 @@ import {
 } from '@reduxjs/toolkit';
 import { getBoards, postBoard, removeBoard } from '../apis/boardApi';
 import {login, join, logout} from '../apis/userApi';
+import i18n from '../i18n';
 
 const boardSlice = createSlice({
     name: 'boards',
@@ -26,13 +27,13 @@ const boardSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(join.fulfilled, (state, action) => {
-            alert(`${action.payload.userId}님 회원가입을 축하합니다.`);
+            alert(i18n.t('boardSlice.joinSucc'));
             window.location.href = '/login';
             
             return state;
         });
         builder.addCase(join.rejected, (state, action) => {
-            alert("에러 발생. 관리자에게 문의하세요.")
+            alert(i18n.t('boardSlice.error'))
             console.log(action.payload);
             return state;
         });
@@ -47,11 +48,11 @@ const boardSlice = createSlice({
         });
         builder.addCase(login.rejected, (state, action) => {
             if(action.payload === 200) {
-                alert("존재하지 않는 아이디입니다.");
+                alert(i18n.t('boardSlice.idNotExist'));
             } else if(action.payload === 201) {
-                alert("비밀번호가 잘못됐습니다.");
+                alert(i18n.t('boardSlice.passwordWrong'));
             } else {
-                alert("알 수 없는 에러발생.");
+                alert(i18n.t('boardSlice.loginError'));
             }
 
             return state;
@@ -66,12 +67,12 @@ const boardSlice = createSlice({
             }
         ));
         builder.addCase(getBoards.rejected, (state, action) => {
-            alert("에러발생.");
+            alert(i18n.t('boardSlice.getBoardFail'));
             console.log(action.payload);
             return state;
         });
         builder.addCase(postBoard.fulfilled, (state, action) => {
-            alert("정상적으로 등록되었습니다.");
+            alert(i18n.t('boardSlice.postBoardSucc'));
 
             return {
                 ...state,
@@ -82,12 +83,12 @@ const boardSlice = createSlice({
             }
         });
         builder.addCase(postBoard.rejected, (state, action) => {
-            alert("에러발생.");
+            alert(i18n.t('boardSlice.postBoardFail'));
             console.log(action.payload);
             return state;
         });
         builder.addCase(removeBoard.fulfilled, (state, action) => {
-            alert("정상적으로 삭제되었습니다.");
+            alert(i18n.t('boardSlice.deleteBoardSucc'));
 
             return {
                 ...state,
@@ -98,12 +99,12 @@ const boardSlice = createSlice({
             }
         });
         builder.addCase(removeBoard.rejected, (state, action) => {
-            alert("에러발생.");
+            alert(i18n.t('boardSlice.deleteBoardFail'));
             console.log(action.payload);
             return state;
         });
         builder.addCase(logout.fulfilled, (state, action) => {
-            alert("로그아웃 성공.");
+            alert(i18n.t('boardSlice.logoutSucc'));
             sessionStorage.removeItem("ACCESS_TOKEN");
 
             return {

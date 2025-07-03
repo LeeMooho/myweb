@@ -60,7 +60,7 @@ const BoardListTable = () => {
         <Container 
             maxWidth="xl" 
             style={{marginTop: '1%', display: 'flex', justifyContent: 'right'}}>
-            <Button type='button' color='primary' onClick={() => navi('/post')}>Write</Button>
+            <Button type='button' color='primary' onClick={() => navi('/post')}>{t('boardListTable.write')}</Button>
         </Container>
         <Container
             maxWidth="xl"

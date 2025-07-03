@@ -33,14 +33,14 @@ const Header = () => {
           <Typography variant='h6' component='div' sx={{flexGrow: 1}}
                       onClick={() => navi('/')} style={{cursor: 'pointer'}}
           >
-            Home
+            {t('header.home')}
           </Typography>
           <Button color='inherit' onClick={() => navi('/board-list')}>{t('header.board')}</Button>
           {isLogin ? 
             (
               <>
                 <Button color='inherit' onClick={() => navi('/mypage')}>{t('header.mypage')}</Button>
-                <Button color='inherit' onClick={handleLogout}>Logout</Button>
+                <Button color='inherit' onClick={handleLogout}>{t('header.logout')}</Button>
               </>
             ) :
             (

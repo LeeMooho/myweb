@@ -3,14 +3,17 @@
     "join": "Sign Up",
     "login": "Log In",
     "mypage": "My Page",
-    "board": "Board"
+    "board": "Board",
+    "logout": "Logout",
+    "home": "Home"
   },
   "boardListTable": {
     "no": "No.",
     "title": "Title",
     "author": "Author",
     "date": "Date",
-    "views": "Views"
+    "views": "Views",
+    "write": "Write"
   },
   "searchBar": {
     "search": "Search",
@@ -50,7 +53,7 @@
     "mainDesc1": "This is Mooho's website",
     "mainDesc2": "Here is my GitHub URL",
     "link": "Link",
-    "download": "Download"
+    "downloads": "Download"
   },
   "join": {
     "idErrorMessage": "Please enter an ID.",
@@ -94,7 +97,17 @@
     "preview": "Preview"
   },
   "boardSlice": {
-    "section1": "Search"
+    "joinSucc": "{{action.payload.userId}}, Welcome!",
+    "error": "An error has occurred. Please contact the administrator.",
+    "idNotExist": "The user ID does not exist.",
+    "passwordWrong": "The password is incorrect.",
+    "loginError": "A login error occurred.",
+    "getBoardFail": "Failed to retrieve the post.",
+    "postBoardSucc": "Registered successfully.",
+    "postBoardFail": "Failed to create the post.",
+    "deleteBoardSucc": "Deleted successfully.",
+    "deleteBoardFail": "Failed to delete the post.",
+    "logoutSucc": "Logout successful."
   },
   "example": {
     "section1": "Search",

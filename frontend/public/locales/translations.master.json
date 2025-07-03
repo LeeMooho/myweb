@@ -19,6 +19,16 @@
       "en": "Board",
       "ko": "게시판",
       "jp": "掲示板"
+    },
+    "logout": {
+      "en": "Logout",
+      "ko": "로그아웃",
+      "jp": "ログアウト"
+    },
+    "home": {
+      "en": "Home",
+      "ko": "홈",
+      "jp": "ホーム"
     }
   },
   "boardListTable": {
@@ -46,6 +56,11 @@
       "en": "Views",
       "ko": "조회수",
       "jp": "閲覧数"
+    },
+    "write": {
+      "en": "Write",
+      "ko": "작성",
+      "jp": "作成"
     }
   },
   "searchBar": {
@@ -210,7 +225,7 @@
       "ko": "링크",
       "jp": "リンク"
     },
-    "download": {
+    "downloads": {
       "en": "Download",
       "ko": "다운로드",
       "jp": "ダウンロード"
@@ -390,10 +405,60 @@
     }
   },
   "boardSlice": {
-    "section1": {
-      "en": "Search",
-      "ko": "검색",
-      "jp": "検索"
+    "joinSucc": {
+      "en": "{{action.payload.userId}}, Welcome!",
+      "ko": "{{action.payload.userId}}님 회원가입을 축하합니다.",
+      "jp": "{action.payload.userId}}様、ようこそ"
+    },
+    "error": {
+      "en": "An error has occurred. Please contact the administrator.",
+      "ko": "에러 발생. 관리자에게 문의하세요.",
+      "jp": "エラーが発生しました。管理者にお問い合わせください。"
+    },
+    "idNotExist": {
+      "en": "The user ID does not exist.",
+      "ko": "존재하지 않는 아이디입니다.",
+      "jp": "存在しないユーザーIDです。"
+    },
+    "passwordWrong": {
+      "en": "The password is incorrect.",
+      "ko": "비밀번호가 잘못됐습니다.",
+      "jp": "パスワードが間違っています。"
+    },
+    "loginError": {
+      "en": "A login error occurred.",
+      "ko": "로그인 에러발생.",
+      "jp": "ログインエラーが発生しました。"
+    },
+    "getBoardFail": {
+      "en": "Failed to retrieve the post.",
+      "ko": "게시글을 가져오는데 실패하였습니다.",
+      "jp": "投稿の取得に失敗しました。"
+    },
+    "postBoardSucc": {
+      "en": "Registered successfully.",
+      "ko": "정상적으로 등록되었습니다.",
+      "jp": "正常に登録されました。"
+    },
+    "postBoardFail": {
+      "en": "Failed to create the post.",
+      "ko": "글작성에 실패하였습니다.",
+      "jp": "投稿の作成に失敗しました。"
+    },
+    "deleteBoardSucc": {
+      "en": "Deleted successfully.",
+      "ko": "정상적으로 삭제되었습니다.",
+      "jp": "正常に削除されました。"
+    },
+    "deleteBoardFail": {
+      "en": "Failed to delete the post.",
+      "ko": "글삭제에 실패하였습니다.",
+      "jp": "投稿の削除に失敗しました。"
+    },
+    "logoutSucc": {
+      "en": "Logout successful.",
+      "ko": "로그아웃 성공.",
+      "jp": "ログアウトに成功しました。"
     }
   },
   "example": {

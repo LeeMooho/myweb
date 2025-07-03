@@ -3,14 +3,17 @@
     "join": "新規登録",
     "login": "ログイン",
     "mypage": "マイページ",
-    "board": "掲示板"
+    "board": "掲示板",
+    "logout": "ログアウト",
+    "home": "ホーム"
   },
   "boardListTable": {
     "no": "No.",
     "title": "タイトル",
     "author": "作成者",
     "date": "日付",
-    "views": "閲覧数"
+    "views": "閲覧数",
+    "write": "作成"
   },
   "searchBar": {
     "search": "検索",
@@ -50,7 +53,7 @@
     "mainDesc1": "こちらはMoohoのウェブサイトです。",
     "mainDesc2": "GitHubのURLはこちらです。",
     "link": "リンク",
-    "download": "ダウンロード"
+    "downloads": "ダウンロード"
   },
   "join": {
     "idErrorMessage": "IDを入力してください。",
@@ -94,7 +97,17 @@
     "preview": "プレビュー"
   },
   "boardSlice": {
-    "section1": "検索"
+    "joinSucc": "{action.payload.userId}}様、ようこそ",
+    "error": "エラーが発生しました。管理者にお問い合わせください。",
+    "idNotExist": "存在しないユーザーIDです。",
+    "passwordWrong": "パスワードが間違っています。",
+    "loginError": "ログインエラーが発生しました。",
+    "getBoardFail": "投稿の取得に失敗しました。",
+    "postBoardSucc": "正常に登録されました。",
+    "postBoardFail": "投稿の作成に失敗しました。",
+    "deleteBoardSucc": "正常に削除されました。",
+    "deleteBoardFail": "投稿の削除に失敗しました。",
+    "logoutSucc": "ログアウトに成功しました。"
   },
   "example": {
     "section1": "検索",
