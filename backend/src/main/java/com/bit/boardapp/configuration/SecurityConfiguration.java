@@ -39,7 +39,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(List.of("http://www.mooho.shop","http://localhost:3000"));  // 또는 List.of("*") 개발환경에서
+    configuration.setAllowedOrigins(List.of("http://www.mooho.shop","http://mooho.shop","http://localhost:3000"));  // 또는 List.of("*") 개발환경에서
     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     configuration.setAllowedHeaders(List.of("*"));
     configuration.setAllowCredentials(true);  // 필요 시
