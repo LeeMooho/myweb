@@ -4,6 +4,7 @@ import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { Grid } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { KAKAO_REST_API_KEY, KAKAO_REDIRECT_URI, KAKAO_REACT_APP_BACK_URL } from '../config';
 
 const KakaoLogin = () => {
 
@@ -14,11 +15,10 @@ const KakaoLogin = () => {
         const params= new URL(document.location.toString()).searchParams;
         const code = params.get('code');
         const grantType = "authorization_code";
-        const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API;
-        const REDIRECT_URI =`http://${process.env.REACT_APP_FRONT_URL}/kakao-login`;
+
 
     axios.post(
-        `https://kauth.kakao.com/oauth/token?grant_type=${grantType}&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
+        `https://kauth.kakao.com/oauth/token?grant_type=${grantType}&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${KAKAO_REDIRECT_URI}&code=${code}`,
         {},
         { headers: { "Content-type": "application/x-www-form-urlencoded;charset=utf-8" } }
     )
@@ -36,12 +36,12 @@ const KakaoLogin = () => {
             }
         )
         .then((res) => {
-            axios.post(`http://${process.env.REACT_APP_BACK_URL}/member/join`, {
+            axios.post(`http://${KAKAO_REACT_APP_BACK_URL}/member/join`, {
                 username: res.data.kakao_account.email,
                 password: res.data.id
             })
             .then(() => {
-                axios.post(`http://${process.env.REACT_APP_BACK_URL}/member/login`, {
+                axios.post(`http://${KAKAO_REACT_APP_BACK_URL}/member/login`, {
                     username: res.data.kakao_account.email,
                     password: res.data.id
                 })
@@ -55,7 +55,7 @@ const KakaoLogin = () => {
                 })
             })
             .catch((e) => {
-                axios.post(`http://${process.env.REACT_APP_BACK_URL}/member/login`, {
+                axios.post(`http://${KAKAO_REACT_APP_BACK_URLL}/member/login`, {
                     username: res.data.kakao_account.email,
                     password: res.data.id
                 })

@@ -4,6 +4,7 @@ import axios from "axios";
 import { MoonLoader } from "react-spinners";
 import { Grid } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { GOOGLE_REST_API_KEY, GOOGLE_CLIENT_SECRET_KEY, GOOGLE_REDIRECT_URL } from '../config';
 
 const GoogleLogin = () => {
     const navi = useNavigate();
@@ -12,19 +13,11 @@ const GoogleLogin = () => {
     useEffect(() => {
         const params= new URL(document.location.toString()).searchParams;
         const code = params.get('code');
-        const REST_API_KEY = process.env.REACT_APP_GOOGLE_REST_API;
-        const CLIENT_SECRET_KEY = process.env.REACT_APP_GOOGLE_CLIENT_SECRET;
         const GRANT_TYPE = "authorization_code";
-        const REDIRECT_URL =`http://${process.env.REACT_APP_FRONT_URL}/google-login`;
-        console.log("code" + code);
-        console.log("REST_API_KEY" + REST_API_KEY);
-        console.log("CLIENT_SECRET_KEY" + CLIENT_SECRET_KEY);
-        console.log("GRANT_TYPE" + GRANT_TYPE);
-        console.log("REDIRECT_URL" + REDIRECT_URL);
-
+        
 
     axios.post(
-        `https://oauth2.googleapis.com/token?code=${code}&client_id=${REST_API_KEY}&client_secret=${CLIENT_SECRET_KEY}&redirect_uri=${REDIRECT_URL}&grant_type=${GRANT_TYPE}`,
+        `https://oauth2.googleapis.com/token?code=${code}&client_id=${GOOGLE_REST_API_KEY}&client_secret=${GOOGLE_CLIENT_SECRET_KEY}&redirect_uri=${GOOGLE_REDIRECT_URL}&grant_type=${GRANT_TYPE}`,
         { headers: { "Content-type": "application/x-www-form-urlencoded" } }
     )
     .then((res) => {
