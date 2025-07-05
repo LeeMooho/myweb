@@ -3,6 +3,8 @@ package com.bit.boardapp.controller;
 import com.bit.boardapp.dto.ResponseDTO;
 import com.bit.boardapp.dto.UserDTO;
 import com.bit.boardapp.service.UserService;
+import com.bit.boardapp.service.impl.SendEmailServiceImpl;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final SendEmailServiceImpl sendEmailServiceImpl;
 
     @PostMapping("/join")
     public ResponseEntity<?> join(@RequestBody UserDTO userDTO) {
@@ -40,6 +43,7 @@ public class UserController {
             responseDTO.setItem(joinUserDTO);
             responseDTO.setStatusCode(HttpStatus.OK.value());
 
+            sendEmailServiceImpl.mailSend(userDTO);
             return ResponseEntity.ok(responseDTO);
         } catch (Exception e) {
             responseDTO.setErrorCode(100);

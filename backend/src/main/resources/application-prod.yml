@@ -9,6 +9,18 @@ spring:
     cors:
       allowed-origins: ${BASE_API_URL}
       allowed-methods: "*"
+  mail:
+    username: ${MAIL_USER}
+    password: ${MAIL_PASS}
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 myapp:
   external-api-url: http://www.mooho.shop:8080
@@ -19,3 +31,5 @@ minio:
   access-key: admin
   secret-key: 1234qwer!
   bucket: mywebbucket
+
+FROM_ADDRESS: myWeb
