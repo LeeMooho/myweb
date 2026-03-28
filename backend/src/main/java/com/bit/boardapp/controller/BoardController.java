@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ public class BoardController {
     private final FileUtils fileUtils;
 
     @GetMapping("/board-list")
-    public ResponseEntity<?> getBoardList(@PageableDefault(page = 0, size = 10) Pageable pageable,
+    public ResponseEntity<?> getBoardList(@PageableDefault(page = 0, size = 10,  sort = "boardRegdate", direction = Sort.Direction.DESC) Pageable pageable,
                                           @RequestParam("searchCondition") String searchCondition,
                                           @RequestParam("searchKeyword") String searchKeyword) {
         ResponseDTO<BoardDTO> responseDTO = new ResponseDTO<>();
@@ -67,7 +68,6 @@ public class BoardController {
                                        @RequestPart(value = "uploadFiles", required = false) MultipartFile[] multipartFiles,
                                        @PageableDefault(page = 0, size = 10) Pageable pageable) {
         ResponseDTO<BoardDTO> responseDTO = new ResponseDTO<>();
-        System.out.println(multipartFiles.length);
 
         try {
             List<BoardFileDTO> boardFileDTOList = new ArrayList<>();

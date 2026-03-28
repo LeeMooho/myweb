@@ -10,13 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetails extends AuditingFields implements UserDetails {
     private User user;
 
     @Override

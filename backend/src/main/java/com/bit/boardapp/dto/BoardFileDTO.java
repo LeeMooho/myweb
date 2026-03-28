@@ -1,5 +1,6 @@
 package com.bit.boardapp.dto;
 
+import java.time.LocalDateTime;
 import com.bit.boardapp.entity.Board;
 import com.bit.boardapp.entity.BoardFile;
 import lombok.*;
@@ -19,6 +20,10 @@ public class BoardFileDTO {
     private String boardFileCate;
     private String boardFileStatus;
     private String newFileName;
+    private LocalDateTime createdAt;
+    private String createdBy;
+    private LocalDateTime modifiedAt;
+    private String modifiedBy;
 
     public BoardFile toEntity(Board board) {
         return BoardFile.builder()

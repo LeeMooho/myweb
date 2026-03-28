@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
         initialValue = 1,
         allocationSize = 1
 )
-public class BoardFile {
+public class BoardFile extends AuditingFields {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,

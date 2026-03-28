@@ -13,24 +13,21 @@ import java.util.List;
 
 @Entity
 @Table(name = "T_BOARD")
-@SequenceGenerator(
-        name = "BoardSeqGenerator",
-        sequenceName = "T_BOARD_SEQ",
-        initialValue = 1,
-        allocationSize = 1
-)
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Board {
+public class Board extends AuditingFields {
     @Id
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "BoardSeqGenerator"
+            strategy = GenerationType.IDENTITY
     )
     private long boardNo;
+
+    @Column(length = 1000)
     private String boardTitle;
+
+    @Column(columnDefinition = "TEXT")
     private String boardContent;
     private String boardWriter;
     private LocalDateTime boardRegdate;

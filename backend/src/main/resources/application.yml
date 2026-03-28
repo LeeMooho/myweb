@@ -8,9 +8,13 @@ spring:
       jdbc-url: jdbc:mysql://db:3306/mywebdb?serverTimezone=Asia/Seoul
       username: root
       password: 1234qwer!
+  sql:
+    init:
+      mode: always
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
       naming:

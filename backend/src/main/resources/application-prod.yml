@@ -21,7 +21,6 @@ spring:
           auth: true
           starttls:
             enable: true
-
 myapp:
   external-api-url: http://www.mooho.shop:8080
   external-base-api-url: http://www.mooho.shop
@@ -33,3 +32,11 @@ minio:
   bucket: mywebbucket
 
 FROM_ADDRESS: myWeb
+
+logging:
+  level:
+    root: INFO
+    "[org.springframework]": DEBUG
+    "[com.zaxxer.hikari]": DEBUG
+    "[org.hibernate.SQL]": DEBUG
+    "[org.hibernate.type.descriptor.sql]": TRACE

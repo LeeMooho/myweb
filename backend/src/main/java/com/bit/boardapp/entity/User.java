@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User extends AuditingFields {
     @Id
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
@@ -28,7 +28,6 @@ public class User {
     private String userName;
     private String userEmail;
     private String userTel;
-    private LocalDateTime userRegdate;
     private String role;
     private boolean isActive;
     private LocalDateTime lastLoginDate;
@@ -41,7 +40,6 @@ public class User {
                 .userName(this.userName)
                 .userEmail(this.userEmail)
                 .userTel(this.userTel)
-                .userRegdate(this.userRegdate.toString())
                 .role(this.role)
                 .isActive(this.isActive)
                 .lastLoginDate(this.lastLoginDate.toString())

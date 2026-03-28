@@ -4,7 +4,6 @@ import com.bit.boardapp.entity.Board;
 import com.bit.boardapp.repository.BoardRepositoryCustom;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -18,7 +17,7 @@ import static com.bit.boardapp.entity.QBoard.board;
 @Repository
 @RequiredArgsConstructor
 public class BoardRepositoryCustomImpl implements BoardRepositoryCustom {
-    private final EntityManager em;
+
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
@@ -26,6 +25,7 @@ public class BoardRepositoryCustomImpl implements BoardRepositoryCustom {
         List<Board> boardList = jpaQueryFactory
                     .selectFrom(board)
                     .where(getSearch(searchCondition, searchKeyword))
+                    .orderBy(board.boardRegdate.desc())
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetch();

@@ -6,6 +6,8 @@ import com.bit.boardapp.service.UserService;
 import com.bit.boardapp.service.impl.SendEmailServiceImpl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
@@ -19,6 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
@@ -53,6 +56,7 @@ public class UserController {
         }
     }
 
+
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
         ResponseDTO<UserDTO> responseDTO = new ResponseDTO<>();
@@ -73,6 +77,7 @@ public class UserController {
                 responseDTO.setErrorCode(201);
                 responseDTO.setErrorMessage(e.getMessage());
             } else {
+                e.printStackTrace();
                 responseDTO.setErrorCode(202);
                 responseDTO.setErrorMessage(e.getMessage());
             }

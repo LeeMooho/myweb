@@ -23,6 +23,10 @@ public class BoardDTO {
     private List<BoardFileDTO> boardFileDTOList;
     private String searchCondition;
     private String searchKeyword;
+    private LocalDateTime createdAt;
+    private String createdBy;
+    private LocalDateTime modifiedAt;
+    private String modifiedBy;
 
     public Board toEntity() {
         return Board.builder()

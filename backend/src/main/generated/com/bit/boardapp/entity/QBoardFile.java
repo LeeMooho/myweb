@@ -22,6 +22,8 @@ public class QBoardFile extends EntityPathBase<BoardFile> {
 
     public static final QBoardFile boardFile = new QBoardFile("boardFile");
 
+    public final QAuditingFields _super = new QAuditingFields(this);
+
     public final QBoard board;
 
     public final StringPath boardFileCate = createString("boardFileCate");
@@ -33,6 +35,18 @@ public class QBoardFile extends EntityPathBase<BoardFile> {
     public final StringPath boardFileOrigin = createString("boardFileOrigin");
 
     public final StringPath boardFilePath = createString("boardFilePath");
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
+
+    //inherited
+    public final StringPath createdBy = _super.createdBy;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedAt = _super.modifiedAt;
+
+    //inherited
+    public final StringPath modifiedBy = _super.modifiedBy;
 
     public QBoardFile(String variable) {
         this(BoardFile.class, forVariable(variable), INITS);

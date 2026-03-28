@@ -19,11 +19,25 @@ public class QUser extends EntityPathBase<User> {
 
     public static final QUser user = new QUser("user");
 
+    public final QAuditingFields _super = new QAuditingFields(this);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> createdAt = _super.createdAt;
+
+    //inherited
+    public final StringPath createdBy = _super.createdBy;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final BooleanPath isActive = createBoolean("isActive");
 
     public final DateTimePath<java.time.LocalDateTime> lastLoginDate = createDateTime("lastLoginDate", java.time.LocalDateTime.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> modifiedAt = _super.modifiedAt;
+
+    //inherited
+    public final StringPath modifiedBy = _super.modifiedBy;
 
     public final StringPath role = createString("role");
 
@@ -34,8 +48,6 @@ public class QUser extends EntityPathBase<User> {
     public final StringPath userName = createString("userName");
 
     public final StringPath userPw = createString("userPw");
-
-    public final DateTimePath<java.time.LocalDateTime> userRegdate = createDateTime("userRegdate", java.time.LocalDateTime.class);
 
     public final StringPath userTel = createString("userTel");
 

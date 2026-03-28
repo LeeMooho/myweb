@@ -5,9 +5,12 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
     ports:
-      - "${DB_PORT:-}:3306"
+      - "3307:3306"
     networks:
       - app-net
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
   backend:
     build:
       context: ./backend
@@ -129,8 +132,8 @@ services:
 volumes:
   minio-data:
   zabbix-db-data:
+  db-data:
 
 networks:
   app-net:
     driver: bridge
-    external: true

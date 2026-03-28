@@ -23,6 +23,10 @@ public class UserDTO {
     private boolean isActive;
     private String lastLoginDate;
     private String token;
+    private LocalDateTime createdAt;
+    private String createdBy;
+    private LocalDateTime modifiedAt;
+    private String modifiedBy;
 
     public User toEntity() {
         return User.builder()
@@ -32,7 +36,6 @@ public class UserDTO {
                 .userName(this.userName)
                 .userEmail(this.userEmail)
                 .userTel(this.userTel)
-                .userRegdate(LocalDateTime.parse(this.userRegdate))
                 .role(this.role)
                 .isActive(this.isActive)
                 .lastLoginDate(LocalDateTime.parse(this.lastLoginDate))

@@ -5,8 +5,11 @@ services:
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    ports:
+      - "3307:3306"
     volumes:
-      - dbdata:/var/lib/mysql
+      - db-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - app-net
 
@@ -148,11 +151,10 @@ services:
 
 
 volumes:
-  dbdata:
+  db-data:
   minio-data:
   zabbix-db-data:  
 
 networks:
   app-net:
     driver: bridge
-    external: true
