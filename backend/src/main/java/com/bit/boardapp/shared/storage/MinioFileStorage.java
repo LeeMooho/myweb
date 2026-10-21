@@ -13,10 +13,15 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
+import java.util.Map;
+import java.util.Set;
+import java.util.Locale;
 
 @Component
 @ConditionalOnProperty(name = "storage.provider", havingValue = "minio", matchIfMissing = true)
 public class MinioFileStorage implements FileStorage {
+    private static final Set<String> INLINE_IMAGE_TYPES = Set.of(
+            "image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp", "image/bmp", "image/avif");
     private final MinioClient client;
     private final String bucket;
 
@@ -36,10 +41,14 @@ public class MinioFileStorage implements FileStorage {
                 contentType = originalName == null ? null : Files.probeContentType(Path.of(originalName));
             }
             if (contentType == null) contentType = "application/octet-stream";
+            String mediaType = contentType.split(";", 2)[0].trim().toLowerCase(Locale.ROOT);
+            // Attachments are served on the app origin; active HTML/SVG must download.
+            String disposition = INLINE_IMAGE_TYPES.contains(mediaType) ? "inline" : "attachment";
             client.putObject(PutObjectArgs.builder()
                     .bucket(bucket).object(directory + fileName)
                     .stream(stream, file.getSize(), -1)
-                    .contentType(contentType).build());
+                    .contentType(contentType)
+                    .headers(Map.of("Content-Disposition", disposition)).build());
             return new StoredFile(fileName, directory, originalName, contentType);
         } catch (Exception error) {
             throw new FileStorageException("File upload failed", error);

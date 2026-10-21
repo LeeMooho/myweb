@@ -3,6 +3,8 @@ package com.bit.boardapp.shared.storage;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.ArgumentCaptor;
 import org.springframework.mock.web.MockMultipartFile;
 
@@ -57,4 +59,17 @@ class MinioFileStorageTest {
                 .hasMessage("File upload failed")
                 .hasCause(failure);
     }
+    @ParameterizedTest
+    @CsvSource({"image/png,inline", "image/jpeg,inline", "text/html,attachment", "image/svg+xml,attachment"})
+    void activeContentDownloadsInsteadOfExecutingOnTheApplicationOrigin(String contentType, String disposition)
+            throws Exception {
+        storage.store(new MockMultipartFile("upload", "file", contentType, new byte[] {1}), "board/");
+
+        ArgumentCaptor<PutObjectArgs> args = ArgumentCaptor.forClass(PutObjectArgs.class);
+        verify(client).putObject(args.capture());
+        assertThat(args.getValue().headers().entries())
+                .filteredOn(entry -> entry.getKey().equalsIgnoreCase("Content-Disposition"))
+                .extracting(java.util.Map.Entry::getValue).containsExactly(disposition);
+    }
+
 }
