@@ -1,8 +1,8 @@
 package com.bit.boardapp;
 
-import com.bit.boardapp.dto.BoardDTO;
-import com.bit.boardapp.repository.BoardRepository;
-import com.bit.boardapp.service.BoardService;
+import com.bit.boardapp.board.application.dto.BoardDTO;
+import com.bit.boardapp.board.persistence.BoardRepository;
+import com.bit.boardapp.board.application.BoardService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
