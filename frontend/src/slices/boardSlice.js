@@ -13,7 +13,10 @@ const boardSlice = createSlice({
         searchCondition: 'all',
         searchKeyword: '',
         page: 0,
-        loginUserId: ''
+        loginUserId: '',
+        listStatus: 'idle',
+        listError: null,
+        listRequestId: null
     },
     reducers: {
         change_searchCondition: (state, action) => ({
@@ -57,19 +60,26 @@ const boardSlice = createSlice({
 
             return state;
         });
-        builder.addCase(getBoards.fulfilled, (state, action) => (
-            {
-                ...state,
-                boards: action.payload.pageItems,
-                searchCondition: action.payload.item.searchCondition,
-                searchKeyword: action.payload.item.searchKeyword,
-                page: action.payload.pageItems.pageable.pageNumber
-            }
-        ));
+        builder.addCase(getBoards.pending, (state, action) => {
+            state.listStatus = 'loading';
+            state.listError = null;
+            state.listRequestId = action.meta.requestId;
+        });
+        builder.addCase(getBoards.fulfilled, (state, action) => {
+            if (state.listRequestId !== action.meta.requestId) return;
+            state.boards = action.payload.pageItems;
+            state.searchCondition = action.payload.item.searchCondition;
+            state.searchKeyword = action.payload.item.searchKeyword;
+            state.page = action.payload.pageItems.number ?? action.payload.pageItems.pageable?.pageNumber ?? 0;
+            state.listStatus = 'succeeded';
+            state.listError = null;
+            state.listRequestId = null;
+        });
         builder.addCase(getBoards.rejected, (state, action) => {
-            alert(i18n.t('boardSlice.getBoardFail'));
-            console.log(action.payload);
-            return state;
+            if (state.listRequestId !== action.meta.requestId) return;
+            state.listStatus = action.meta.aborted ? 'idle' : 'failed';
+            state.listError = action.meta.aborted ? null : (action.payload?.message || action.error.message);
+            state.listRequestId = null;
         });
         builder.addCase(postBoard.fulfilled, (state, action) => {
             alert(i18n.t('boardSlice.postBoardSucc'));
