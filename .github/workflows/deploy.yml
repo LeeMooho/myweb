@@ -1,0 +1,63 @@
+name: Test and deploy main
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Test and build frontend
+        working-directory: frontend
+        env:
+          CI: 'true'
+          REACT_APP_API_URL: /api
+          REACT_APP_MINIO_API_URL: /storage/mywebbucket/
+        run: |
+          npm ci --no-audit --no-fund
+          npm test -- --watchAll=false --runInBand
+          # Existing repository lint warnings must not hide a build failure.
+          CI=false npm run build
+      - name: Test and build backend
+        working-directory: backend
+        run: bash gradlew --no-daemon --max-workers=2 clean test bootJar
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: [self-hosted, linux, x64, myweb-production]
+    environment: production
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: true
+          persist-credentials: false
+      - name: Deploy tested revision
+        env:
+          DEPLOY_ENV_FILE: ${{ vars.DEPLOY_ENV_FILE || '/etc/myweb/.env.prod' }}
+          COMPOSE_PROJECT_NAME: ${{ vars.COMPOSE_PROJECT_NAME || 'myweb' }}
+        run: bash scripts/deploy.sh
