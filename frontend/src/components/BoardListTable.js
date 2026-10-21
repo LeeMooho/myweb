@@ -1,4 +1,4 @@
-import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, Container, TableBody, Button, Pagination } from '@mui/material';
+import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, Container, TableBody, Button, Pagination, Alert, CircularProgress } from '@mui/material';
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBoards } from '../apis/boardApi';
@@ -7,28 +7,39 @@ import { useTranslation } from 'react-i18next';
 
 const BoardListTable = () => {
     const boards = useSelector(state => state.boards.boards);
-    const searchCondtion = useSelector(state => state.boards.searchCondition);
+    const searchCondition = useSelector(state => state.boards.searchCondition);
     const searchKeyword = useSelector(state => state.boards.searchKeyword);
     const page = useSelector(state => state.boards.page);
+    const listStatus = useSelector(state => state.boards.listStatus);
+    const loading = listStatus === 'loading';
     const dispatch = useDispatch();
     const navi = useNavigate();
     const { t } = useTranslation();
 
     useEffect(() => {
-        dispatch(getBoards({searchCondition: 'all', searchKeyword: '', page: 0}));
-    }, []);
+        const request = dispatch(getBoards({searchCondition: 'all', searchKeyword: '', page: 0}));
+        return () => request.abort();
+    }, [dispatch]);
 
     const changePage = useCallback((e, v) => {
         dispatch(getBoards({
-            searchCondition: searchCondtion,
+            searchCondition,
             searchKeyword: searchKeyword,
             page: parseInt(v) - 1
         }));
-    }, [searchCondtion, searchKeyword]);
+    }, [dispatch, searchCondition, searchKeyword]);
 
   return (
     <>
-        <Container maxWidth='xl'>
+        <Container maxWidth='xl' aria-busy={loading}>
+            {loading && <div role="status" style={{textAlign: 'center', marginTop: '1rem'}}>
+                <CircularProgress size={24} aria-label={t('boardListTable.loading')} />
+            </div>}
+            {listStatus === 'failed' && <Alert severity="error" action={
+                <Button color="inherit" onClick={() => dispatch(getBoards({searchCondition, searchKeyword, page}))}>
+                    {t('boardListTable.retry')}
+                </Button>
+            }>{t('boardListTable.loadError')}</Alert>}
             <TableContainer component={Paper} style={{marginTop: '3%'}}>
                 <Table>
                     <TableHead>
@@ -41,9 +52,13 @@ const BoardListTable = () => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+                        {listStatus === 'succeeded' && !boards.content?.length &&
+                            <TableRow><TableCell colSpan={5} align="center">
+                                {t('boardListTable.empty')}
+                            </TableCell></TableRow>}
                         {boards.content && boards.content.map(
-                            (board, index) => 
-                                <TableRow key={index}>
+                            (board) =>
+                                <TableRow key={board.boardNo}>
                                     <TableCell>{board.boardNo}</TableCell>
                                     <TableCell>
                                         <Link to={`/board/${board.boardNo}`}>{board.boardTitle}</Link>
@@ -57,8 +72,8 @@ const BoardListTable = () => {
                 </Table>
             </TableContainer>
         </Container>
-        <Container 
-            maxWidth="xl" 
+        <Container
+            maxWidth="xl"
             style={{marginTop: '1%', display: 'flex', justifyContent: 'right'}}>
             <Button type='button' color='primary' onClick={() => navi('/post')}>{t('boardListTable.write')}</Button>
         </Container>
@@ -66,7 +81,7 @@ const BoardListTable = () => {
             maxWidth="xl"
             style={{marginTop: '1%', marginBottom: '1%',
                      display: 'flex', justifyContent: 'center'}}>
-            {boards && <Pagination count={boards.totalPages} page={page + 1} onChange={changePage}></Pagination>}
+            {boards.totalPages > 0 && <Pagination disabled={loading} count={boards.totalPages} page={page + 1} onChange={changePage}></Pagination>}
         </Container>
     </>
   );

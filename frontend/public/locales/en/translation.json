@@ -13,7 +13,11 @@
     "author": "Author",
     "date": "Date",
     "views": "Views",
-    "write": "Write"
+    "write": "Write",
+    "loading": "Loading posts",
+    "retry": "Retry",
+    "loadError": "Unable to load posts. Please try again.",
+    "empty": "No posts found."
   },
   "searchBar": {
     "search": "Search",

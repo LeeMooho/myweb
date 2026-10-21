@@ -39,7 +39,7 @@ const SearchBar = () => {
             <Grid container spacing={1}>
                 <Grid item md={3}>
                     <NativeSelect
-                        defaultValue={searchCondition}
+                        value={searchCondition}
                         inputProps={{
                             name: 'searchCondition'
                         }}

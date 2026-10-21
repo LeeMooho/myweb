@@ -13,7 +13,11 @@
     "author": "작성자",
     "date": "날짜",
     "views": "조회수",
-    "write": "작성"
+    "write": "작성",
+    "loading": "게시글을 불러오는 중입니다",
+    "retry": "다시 시도",
+    "loadError": "게시글을 불러오지 못했습니다. 다시 시도해 주세요.",
+    "empty": "게시글이 없습니다."
   },
   "searchBar": {
     "search": "검색",
