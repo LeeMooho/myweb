@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:board-test;DB_CLOSE_DELAY=-1
+      username: sa
+      password: ""
+  sql:
+    init:
+      mode: never
+  jpa:
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  mail:
+    username: ""
+    password: ""
+minio:
+  endPoint: http://127.0.0.1
+  access-key: test-access
+  secret-key: test-secret
