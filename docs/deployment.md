@@ -92,7 +92,7 @@ sudo bash -c 'cd /home/deploy/actions-runner && ./svc.sh install deploy && ./svc
 
 runner는 `deploy` 사용자로 실행되어야 하며 Docker와 `/etc/myweb/.env.prod`에 접근할 수 있어야 합니다. GitHub 화면에 runner가 **Idle**로 표시되는지 확인합니다.
 
-이 runner는 신뢰하는 `main`의 배포에만 사용합니다. `main` 대상 PR도 테스트를 실행하지만 GitHub-hosted `ubuntu-latest`만 사용하며, PR·fork의 코드는 서버 runner에서 실행하지 않습니다. PR 검사와 운영 배포의 실행 그룹도 분리됩니다. 서버는 GitHub·패키지 저장소·컨테이너 레지스트리에 외부 연결이 가능해야 하며, GitHub가 서버로 들어오는 별도 SSH 연결은 필요하지 않습니다.
+이 runner는 신뢰하는 `main`의 배포에만 사용합니다. `main` 대상 PR도 테스트를 실행하지만 GitHub-hosted `ubuntu-24.04`만 사용하며, PR·fork의 코드는 서버 runner에서 실행하지 않습니다. PR 검사와 운영 배포의 실행 그룹도 분리됩니다. 서버는 GitHub·패키지 저장소·컨테이너 레지스트리에 외부 연결이 가능해야 하며, GitHub가 서버로 들어오는 별도 SSH 연결은 필요하지 않습니다.
 
 ## 5. GitHub 설정과 활성화
 
