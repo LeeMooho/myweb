@@ -53,6 +53,7 @@ services:
       SPRING_SQL_INIT_MODE: never
       SPRING_MAIL_USERNAME: ${MAIL_USER:-}
       SPRING_MAIL_PASSWORD: ${MAIL_PASS:-}
+      STORAGE_PROVIDER: ${STORAGE_PROVIDER:-minio}
       MINIO_ENDPOINT: http://minio
       MINIO_ACCESS_KEY: ${MINIO_ROOT_USER}
       MINIO_SECRET_KEY: ${MINIO_ROOT_PASSWORD}
@@ -73,7 +74,7 @@ services:
       target: production
       args:
         REACT_APP_API_URL: /api
-        REACT_APP_MINIO_API_URL: /storage/mywebbucket/
+        REACT_APP_FILE_BASE_URL: ${PUBLIC_FILE_BASE_URL:-/storage/mywebbucket/}
         REACT_APP_FRONT_URL: ${REACT_APP_FRONT_URL:-}
         REACT_APP_BACK_URL: ${REACT_APP_BACK_URL:-}
         REACT_APP_KAKAO_REST_API: ${REACT_APP_KAKAO_REST_API:-}
