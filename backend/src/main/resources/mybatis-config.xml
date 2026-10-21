@@ -8,6 +8,6 @@
     </settings>
 
     <typeAliases>
-        <typeAlias type="com.bit.boardapp.dto.UserDTO" alias="user"></typeAlias>
+        <typeAlias type="com.bit.boardapp.user.application.dto.UserDTO" alias="user"></typeAlias>
     </typeAliases>
 </configuration>

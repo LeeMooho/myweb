@@ -1,5 +1,5 @@
 export const API_URL = process.env.REACT_APP_API_URL;
-export const MINIO_API_URL = process.env.REACT_APP_MINIO_API_URL;
+export const FILE_BASE_URL = process.env.REACT_APP_FILE_BASE_URL || process.env.REACT_APP_MINIO_API_URL;
 export const GOOGLE_REST_API_KEY = process.env.REACT_APP_GOOGLE_REST_API;
 export const GOOGLE_CLIENT_SECRET_KEY = process.env.REACT_APP_GOOGLE_CLIENT_SECRET;
 export const GOOGLE_REDIRECT_URL =`http://${process.env.REACT_APP_FRONT_URL}/google-login`;
