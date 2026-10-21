@@ -4,7 +4,7 @@ import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBoard, fetchBoard, updateBoard } from '../api/boardApi';
-import { MINIO_API_URL } from '../../../config';
+import { FILE_BASE_URL } from '../../../config';
 import { useTranslation } from 'react-i18next';
 
 const Board = () => {
@@ -452,7 +452,7 @@ const Board = () => {
                                     width: '100%', height: '100%', zIndex: 'none',
                                     cursor: 'pointer'
                                 }} className='fileImg' id={`img${boardFile.boardFileNo}`} 
-                                src={`${MINIO_API_URL}${boardFile.boardFilePath}${boardFile.boardFileName}`}
+                                src={`${FILE_BASE_URL}${boardFile.boardFilePath}${boardFile.boardFileName}`}
                                 onClick={() => openChangeFileInput(boardFile.boardFileNo)}></img>
                                 <input type='button' className='btnDel' value='x'
                                        style={{width: '30px', height: '30px', position: 'absolute',

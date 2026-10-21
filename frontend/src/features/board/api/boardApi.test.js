@@ -68,3 +68,10 @@ test('editing uses the shared authenticated multipart transport', async () => {
     expect(axios.put.mock.calls[0][1]).toBe(form);
     expect(axios.put.mock.calls[0][2].headers).toEqual({ Authorization: 'Bearer current-token' });
 });
+
+test('direct API callers receive normalized errors without Axios request internals', async () => {
+    const request = {};
+    request.self = request;
+    axios.get.mockRejectedValue({ response: { status: 404, data: { errorMessage: 'Post missing' } }, request });
+    await expect(fetchBoard(7)).rejects.toEqual({ status: 404, message: 'Post missing' });
+});
