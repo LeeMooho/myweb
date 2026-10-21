@@ -8,7 +8,7 @@ FROM debian:bookworm-slim
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /data && chown 65532:65532 /data
-COPY --from=builder /go/bin/minio /go/bin/mc /usr/local/bin/
+COPY --chmod=0755 --from=builder /go/bin/minio /go/bin/mc /usr/local/bin/
 USER 65532:65532
 EXPOSE 9000 9001
 ENTRYPOINT ["minio"]

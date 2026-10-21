@@ -4,7 +4,7 @@
 
 ## 1. 서버 준비
 
-권장 시작 구성은 Ubuntu 24.04 LTS, Linux x64, 2 vCPU 이상, RAM 4GB 이상입니다. 서버에서 Java·React 이미지를 빌드하므로 RAM 8GB 이상이면 여유가 있습니다. 저장 공간은 데이터와 Docker 이미지 크기를 고려해 30GB 이상으로 준비합니다.
+권장 시작 구성은 Ubuntu 24.04 LTS, Linux x64, 2 vCPU 이상, RAM 4GB 이상입니다. 서버에서 Java·React 이미지를 빌드하므로 RAM 8GB 이상이면 여유가 있습니다. 저장 공간은 데이터와 Docker 이미지 크기를 고려해 40GB 이상으로 준비합니다.
 
 - [Docker의 Ubuntu 설치 문서](https://docs.docker.com/engine/install/ubuntu/)에 따라 Docker Engine과 Compose plugin을 설치합니다.
 - 서버 보안 그룹·방화벽에서 SSH와 웹 서비스용 80/443 포트만 필요한 범위에 허용합니다. MySQL·MinIO를 인터넷에 직접 공개할 필요가 없습니다.
@@ -39,7 +39,7 @@ nano /etc/myweb/.env.prod
 
 비공개 저장소라면 최초 clone에는 읽기 전용 deploy key 등 GitHub가 지원하는 인증을 사용합니다. 비밀값을 명령행이나 채팅에 입력하지 않습니다.
 
-`deploy/.env.example`의 `DB_PASS`, `DB_ROOT_PASS`, `MINIO_ROOT_PASSWORD`를 각각 긴 임의 값으로 바꿉니다. `DB_USER`는 root 이외의 앱 전용 계정을 사용합니다. `MAIL_USER`·`MAIL_PASS`는 메일 발송을 사용할 때 설정합니다. 파일은 서버에만 보관하고 Git에 추가하지 않습니다. `REACT_APP_*`는 브라우저에 배포되는 공개 설정이므로 API 주소와 공개 클라이언트 ID만 넣습니다. Google client secret 같은 비밀값은 넣지 않습니다.
+`deploy/.env.example`의 `DB_PASS`, `DB_ROOT_PASS`, `MINIO_ROOT_PASSWORD`를 각각 긴 임의 값으로 바꿉니다. `DB_USER`는 root 이외의 앱 전용 계정을 사용합니다. `MAIL_USER`·`MAIL_PASS`는 메일 발송을 사용할 때 설정합니다. 파일은 서버에만 보관하고 Git에 추가하지 않습니다. DB 초기 계정·비밀번호는 최초 볼륨 초기화 때 설정됩니다. 이후 변경할 때는 환경 파일과 DB 내부 계정을 함께 갱신하며, 비밀번호 변경을 위해 데이터 볼륨을 삭제하지 않습니다. `REACT_APP_*`는 브라우저에 배포되는 공개 설정이므로 API 주소와 공개 클라이언트 ID만 넣습니다. Google client secret 같은 비밀값은 넣지 않습니다.
 
 서버의 `.env.prod`를 직접 사용하므로 GitHub Actions Secrets에 DB·MinIO 비밀번호를 복사할 필요가 없습니다. 파일을 읽을 수 있는 계정은 배포 계정과 관리자에 한정합니다.
 
